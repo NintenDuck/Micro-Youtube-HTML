@@ -178,7 +178,7 @@ button :hover{
   margin-top: 1rem;
   padding-right: 1rem;
   border-top: 2px solid black;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .item-reproduccion {
