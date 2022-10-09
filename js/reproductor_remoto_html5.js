@@ -163,34 +163,37 @@ function listSearches(){
 
   searchBarElement = document.getElementById("search-bar")
   searchDataList = document.getElementById("you-search-datalist")
-  newSearchList = loremList
-  deleteAllOptionsElement()
-  // addNewOptions(loremList)
 
-  // Eliminamos elementos anteriores
-  
-  // Agregamos nuevos elementos (la lista loremNames)
+  newSearchList = loremList
+
+  deleteAllOptionsElement()
+  addNewOptions(newSearchList)
 }
 
 function deleteAllOptionsElement() {
   searchDataList = document.getElementById("you-search-datalist")
   dataListChildren = searchDataList.childNodes
   
-  dataListChildren.forEach(children => {
-    children.remove()
-  })
+  for (let i = 0; i < 5; i++) {
+    dataListChildren.forEach(children => {
+      children.remove()
+    })
+  }
 
   console.log(dataListChildren)
-  console.log("Removed all children elements, probably")
+  console.log("[REMOVED] Removed all elements from datalist")
+
 }
 
 function addNewOptions(newOptionList) {
   searchDataList = document.getElementById("you-search-datalist")
-  dataListChildren = searchDataList.childNodes
   newOptionList.forEach(search => {
     newOption = document.createElement("option")
-    newOptionList.value = search
+    newOption.value = search
+		searchDataList.appendChild(newOption)
   });
+
+	console.log(searchDataList.childNodes)
 }
 // function AddSongToList(id_padre, item_type, item_className, hijos_item, type) {
 //   let padre = document.getElementById(id_padre)
