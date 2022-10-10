@@ -153,7 +153,6 @@ function listarCanciones() {
 
 
 function listSearches(){
-  // Obtenemos una nueva lista con cada tecleo
   loremList = [
     "lain",
     "lorem",
@@ -161,18 +160,16 @@ function listSearches(){
     "lenneth"
   ]
 
-  searchBarElement = document.getElementById("search-bar")
   searchDataList = document.getElementById("you-search-datalist")
-
   newSearchList = loremList
 
-  deleteAllOptionsElement()
+  deleteDatalistOptions(searchDataList)
   addNewOptions(newSearchList)
+	console.log("DataList Updated")
 }
 
-function deleteAllOptionsElement() {
-  searchDataList = document.getElementById("you-search-datalist")
-  dataListChildren = searchDataList.childNodes
+function deleteDatalistOptions(parentDataList) {
+  dataListChildren = parentDataList.childNodes
   
   for (let i = 0; i < 5; i++) {
     dataListChildren.forEach(children => {

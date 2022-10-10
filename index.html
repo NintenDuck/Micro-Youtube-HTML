@@ -14,8 +14,12 @@
 <body onload="onload">
   <div class=content>
     <div class="busqueda">
-      <button onclick="listSearches()">Something</button>
-      <input id="search-bar" class="input-buscar" type="search" list="you-search-datalist" placeholder="Buscar Musica...">
+      <input  id="search-bar" 
+              class="input-buscar" 
+              onkeyup=listSearches()
+              type="search" 
+              list="you-search-datalist" 
+              placeholder="Buscar Musica...">
       <datalist id="you-search-datalist">
         <option value="Something"></option>
         <option value="Lalo"></option>
