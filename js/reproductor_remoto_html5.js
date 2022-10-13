@@ -192,24 +192,17 @@ function addNewOptions(newOptionList) {
 
 	console.log(searchDataList.childNodes)
 }
-// function AddSongToList(id_padre, item_type, item_className, hijos_item, type) {
-//   let padre = document.getElementById(id_padre)
-//   let item = document.createElement(item_type)
-//   item.className = item_className
 
-//   if (hijos_item != null){
-//     hijos_item.forEach(hijos_item => {
-//       let element_hijo = document.createElement(hijos_item.type)
-//       Object.keys(hijos_item['atributos']).forEach(atributo => {
-//         element_hijo[atributo] = hijos_item['atributo'][atributo]
-//       })
-//       element_hijo['hijos'].forEach(hijo => {
-//         AddSongToList(element_hijo, hijo['hijo'], hijo['className'], hijo['hijos'])
-//       })
-//     });
-//     padre.appendChild(element_hijo)
-//   }
-// }
+
+function searchSong() {
+  inputElement = document.getElementById("search-bar")
+  inputContent = inputElement.value
+  
+  if ( inputContent == "" ) return
+
+  alert("Searching: " + inputContent + "...")
+}
+
 
 const loremNames = [
   "Ayla",
