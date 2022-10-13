@@ -1,0 +1,3 @@
+function searchYoutubeSuggestions(){
+    alert("Searching...")
+}
