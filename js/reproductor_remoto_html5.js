@@ -176,10 +176,6 @@ function deleteDatalistOptions(parentDataList) {
       children.remove()
     })
   }
-
-  console.log(dataListChildren)
-  console.log("[REMOVED] Removed all elements from datalist")
-
 }
 
 function addNewOptions(newOptionList) {
