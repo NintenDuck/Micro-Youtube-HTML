@@ -90,7 +90,10 @@ button :hover{
 .ui-reproductor {
   display: flex;
   gap: 1rem;
+  margin-top: 1rem;
   padding: 1rem;
+  background-color: crimson;
+  border-radius: 2rem;
   justify-content: space-around;
   align-items: flex-end;
 }
@@ -99,16 +102,17 @@ button :hover{
   border: 4px solid black;
   background-color: crimson;
   /* flex-grow: 2; */
+  border-radius: 2rem;
   width: 400px;
   height: 250px;
 }
 
 .informacion {
+  color: antiquewhite;
   display: flex;
   flex-direction: column;
   flex-grow: 3;
   justify-content: flex-end;
-  /* border: 4px solid black; */
   width: 300px;
   height: 100%;
   text-align: left;
@@ -125,6 +129,9 @@ button :hover{
   flex-basis: 0px;
   flex-grow: 1;
   justify-content: center;
+  padding: 0rem 1rem;
+  background-color: antiquewhite;
+  border-radius: 2rem;
   width: 600px;
   height: 100%;
 }
@@ -137,7 +144,7 @@ button :hover{
 #progress-bar {
   display: flex;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   height: 0.5rem;
   background-color: gray;
   border-radius: 1rem;
@@ -164,7 +171,9 @@ button :hover{
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin: 1rem 0px 0rem 0px;
+  margin: 1rem 0px;
+  border: .5rem solid crimson;
+  border-radius: 5rem;
   /* border: 2px solid red; */
 }
 
