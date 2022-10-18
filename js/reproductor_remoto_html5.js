@@ -158,6 +158,9 @@ function addSongToList(songName, authorName, userName) {
   trashIcon.addEventListener("mouseover", () => {
     trashIcon.style.cursor = "pointer"
   })
+  trashIcon.addEventListener("click", () => {
+    newListSong.remove()
+  })
 
   // Add All Elements to 'newListSong'
   newListSong.appendChild(heartIcon)
