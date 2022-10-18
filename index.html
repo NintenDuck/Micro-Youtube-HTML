@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://www.youtube.com/iframe_api"></script>
   <script src="./js/reproductor_remoto_html5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="./css/styles.css">
   <title>FLEX</title>
 </head>
@@ -55,6 +56,7 @@
       <img src="./resources/svg/play-skip-forward-outline.svg" style="height: 4rem;">
     </div>
     <button id="btnListarCanciones" name="bntListarCanciones" onclick=listarCanciones()>List Songs</button>
+    <button onclick="foo()">Search</button>
     <div id="playlist-container">
       <div class="item-reproduccion">
         <div id="like-btn">
