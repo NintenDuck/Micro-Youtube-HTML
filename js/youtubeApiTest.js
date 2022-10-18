@@ -1,9 +1,10 @@
+var apiKey = "AIzaSyCveHlrpaGLt35eFLOrX2WeemPJS1GZDv4"
 var personalID = "VP6isH0l3nLU-NIJs875nw"
 
 function start() {
     // 2. Initialize the JavaScript client library.
     gapi.client.init({
-        'apiKey': 'YOUR_API_KEY',
+        'apiKey': apiKey,
         // Your API key will be automatically added to the Discovery Document URLs.
         'discoveryDocs': ['https://people.googleapis.com/$discovery/rest'],
         // clientId and scope are optional if auth is not required.
@@ -40,7 +41,7 @@ function authenticate() {
 
 
 function loadClient() {
-    gapi.client.setApiKey("YOUR_API_KEY");
+    gapi.client.setApiKey(personalKey);
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/youtube/v3/rest")
         .then(function () {
                 console.log("GAPI client loaded for API");
