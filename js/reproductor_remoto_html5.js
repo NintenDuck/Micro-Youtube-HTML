@@ -137,11 +137,24 @@ function addSongToList(songName, authorName, userName) {
 
   // Create and assign value to new elements
   heartIcon = document.createElement("img")
-  heartIcon.src = "./resources/svg/heart-outline.svg"
+  heartIcon.src = "./resources/svg/heart-dislike-outline.svg"
   heartIcon.style.height = "2rem"
   heartIcon.addEventListener("mouseover", () => {
     heartIcon.style.cursor = "pointer"
   })
+
+  let hearthIconState = false
+  
+  heartIcon.addEventListener("click", () => {
+    if (hearthIconState === false) {
+      heartIcon.src = "resources/svg/heart-outline.svg"
+      hearthIconState = true
+    } else {
+      heartIcon.src = "resources/svg/heart-dislike-outline.svg"
+      hearthIconState = false
+    }
+  })
+  
   songNameElement = document.createElement("div")
   songNameElement.id = "song-name"
   songNameElement.textContent = songName
