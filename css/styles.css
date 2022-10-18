@@ -245,7 +245,3 @@ button :hover{
   height: 2rem;
   width: 2rem;
 }
-
-#trash-btn :hover {
-  cursor: pointer;
-}
