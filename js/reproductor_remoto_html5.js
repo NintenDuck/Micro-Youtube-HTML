@@ -115,7 +115,7 @@ async function getSearchResults() {
   if (respuesta.status === 200) {
     const busqueda = await respuesta.data.items
     console.log("Busqueda satisfactoria!")
-    return busqueda
+    return listToSearchNames(busqueda)
   } else {
     console.log("[ERROR] Ocurrio algo en la solicitud")
   }
@@ -203,7 +203,7 @@ async function listAutocompleteSearches() {
   searchDataList = document.getElementById("you-search-datalist")
 
   deleteDatalistOptions(searchDataList)
-  newSearchList = await listAutocompleteSearches(getSearchResults())
+  newSearchList = await getSearchResults()
   console.log(newSearchList)
   addNewDatalistOptions(newSearchList)
   // console.log("DataList Updated")
