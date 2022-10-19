@@ -101,11 +101,11 @@ $("#prev").on("click", function () {
 });
 
 // OWN CODE
-async function getSearchResults() {
+async function getSearchResults(querySearch) {
   const respuesta = await axios.get("https://www.googleapis.com/youtube/v3/search?", {
     params: {
       key: apiKey,
-      q: "minecraft",
+      q: querySearch,
       part: "snippet",
       order: "relevance",
       maxResults: 10,
@@ -201,26 +201,25 @@ function debugListSongs() {
 
 async function listAutocompleteSearches() {
   searchDataList = document.getElementById("you-search-datalist")
+  searchQuery = document.getElementById("search-bar").value
 
   deleteDatalistOptions(searchDataList)
-  newSearchList = await getSearchResults()
+
+  newSearchList = await getSearchResults(searchQuery)
   console.log(newSearchList)
+
   addNewDatalistOptions(newSearchList)
-  // console.log("DataList Updated")
 }
 
 
 function deleteDatalistOptions(parentDataList) {
   dataListChildren = parentDataList.childNodes
+
   for (let i = 0; i < 7; i++) {
     dataListChildren.forEach(children => {
       children.remove()
     })
   }
-
-  // console.log(dataListChildren)
-  // console.log("[REMOVED] Removed all elements from datalist")
-
 }
 
 
@@ -231,16 +230,4 @@ function addNewDatalistOptions(newOptionList) {
     newOption.value = search
     searchDataList.appendChild(newOption)
   });
-
-  // console.log(searchDataList.childNodes)
-}
-
-
-function searchSong() {
-  inputElement = document.getElementById("search-bar")
-  inputContent = inputElement.value
-
-  if (inputContent == "") return
-
-  alert("Searching: " + inputContent + "...")
 }
