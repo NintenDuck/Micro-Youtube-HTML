@@ -102,23 +102,22 @@ $("#prev").on("click", function () {
 
 // OWN CODE
 async function getSearchResults() {
-  const respuesta = await axios.get("https://www.googleapis.com/youtube/v3/search?",
-  {
-      params: {
-          key: apiKey,
-          q: "minecraft",
-          part: "snippet",
-          order: "relevance",
-          maxResults: 10,
-          type: "music"
-      }
+  const respuesta = await axios.get("https://www.googleapis.com/youtube/v3/search?", {
+    params: {
+      key: apiKey,
+      q: "minecraft",
+      part: "snippet",
+      order: "relevance",
+      maxResults: 10,
+      type: "music"
+    }
   })
-  if (respuesta.status === 200){
-      const busqueda = await respuesta.data.items
-      console.log("Busqueda satisfactoria!")
-      return busqueda
+  if (respuesta.status === 200) {
+    const busqueda = await respuesta.data.items
+    console.log("Busqueda satisfactoria!")
+    return busqueda
   } else {
-      console.log("[ERROR] Ocurrio algo en la solicitud")
+    console.log("[ERROR] Ocurrio algo en la solicitud")
   }
 }
 
@@ -148,7 +147,7 @@ function addSongToList(songName, authorName, userName) {
   })
 
   let hearthIconState = false
-  
+
   heartIcon.addEventListener("click", () => {
     if (hearthIconState === false) {
       heartIcon.src = "resources/svg/heart-outline.svg"
@@ -158,7 +157,7 @@ function addSongToList(songName, authorName, userName) {
       hearthIconState = false
     }
   })
-  
+
   songNameElement = document.createElement("div")
   songNameElement.id = "song-name"
   songNameElement.textContent = songName
@@ -200,14 +199,14 @@ function debugListSongs() {
 }
 
 
-async function listAutocompleteSearches(){
+async function listAutocompleteSearches() {
   searchDataList = document.getElementById("you-search-datalist")
 
   deleteDatalistOptions(searchDataList)
   newSearchList = await listAutocompleteSearches(getSearchResults())
   console.log(newSearchList)
   addNewDatalistOptions(newSearchList)
-	// console.log("DataList Updated")
+  // console.log("DataList Updated")
 }
 
 
@@ -230,18 +229,18 @@ function addNewDatalistOptions(newOptionList) {
   newOptionList.forEach(search => {
     newOption = document.createElement("option")
     newOption.value = search
-		searchDataList.appendChild(newOption)
+    searchDataList.appendChild(newOption)
   });
 
-	// console.log(searchDataList.childNodes)
+  // console.log(searchDataList.childNodes)
 }
 
 
 function searchSong() {
   inputElement = document.getElementById("search-bar")
   inputContent = inputElement.value
-  
-  if ( inputContent == "" ) return
+
+  if (inputContent == "") return
 
   alert("Searching: " + inputContent + "...")
 }
