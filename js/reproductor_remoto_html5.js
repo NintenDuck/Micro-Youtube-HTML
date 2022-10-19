@@ -101,12 +101,7 @@ $("#prev").on("click", function () {
 });
 
 // OWN CODE
-
-
-async function foo() {
-  console.log("love lain")
-  // searchBox = document.getElementById("search-bar")
-  // searchQuery = searchBox.value
+async function getSearchResults() {
   const respuesta = await axios.get("https://www.googleapis.com/youtube/v3/search?",
   {
       params: {
@@ -114,17 +109,26 @@ async function foo() {
           q: "minecraft",
           part: "snippet",
           order: "relevance",
-          maxResults: 5,
+          maxResults: 10,
           type: "music"
       }
   })
   if (respuesta.status === 200){
       const busqueda = await respuesta.data.items
-      console.log(busqueda)
+      console.log("Busqueda satisfactoria!")
       return busqueda
   } else {
       console.log("[ERROR] Ocurrio algo en la solicitud")
   }
+}
+
+
+function listToSearchNames(resultsArray = []) {
+  namesArray = resultsArray.map(x => {
+    return x.snippet.title
+  })
+
+  return namesArray
 }
 
 
@@ -186,7 +190,8 @@ function addSongToList(songName, authorName, userName) {
   playListContainer.appendChild(newListSong)
 }
 
-function listarCanciones() {
+
+function debugListSongs() {
   addSongToList("That's Life", "Frank Sinatra", "@Lain_Iwakura")
   addSongToList("I love you Baby", "Frank Sinatra", "@Lain_Iwakura")
   addSongToList("Bohemian Raphsody", "Queen", "@Lain_Iwakura")
@@ -195,38 +200,32 @@ function listarCanciones() {
 }
 
 
-
-function listSearches(){
-  loremList = [
-    "lain",
-    "lorem",
-    "ipsum",
-    "lenneth"
-  ]
-
+async function listAutocompleteSearches(){
   searchDataList = document.getElementById("you-search-datalist")
-  newSearchList = loremList
 
   deleteDatalistOptions(searchDataList)
-  addNewOptions(newSearchList)
-	console.log("DataList Updated")
+  newSearchList = await listAutocompleteSearches(getSearchResults())
+  console.log(newSearchList)
+  addNewDatalistOptions(newSearchList)
+	// console.log("DataList Updated")
 }
+
 
 function deleteDatalistOptions(parentDataList) {
   dataListChildren = parentDataList.childNodes
-  
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 7; i++) {
     dataListChildren.forEach(children => {
       children.remove()
     })
   }
 
-  console.log(dataListChildren)
-  console.log("[REMOVED] Removed all elements from datalist")
+  // console.log(dataListChildren)
+  // console.log("[REMOVED] Removed all elements from datalist")
 
 }
 
-function addNewOptions(newOptionList) {
+
+function addNewDatalistOptions(newOptionList) {
   searchDataList = document.getElementById("you-search-datalist")
   newOptionList.forEach(search => {
     newOption = document.createElement("option")
@@ -234,7 +233,7 @@ function addNewOptions(newOptionList) {
 		searchDataList.appendChild(newOption)
   });
 
-	console.log(searchDataList.childNodes)
+	// console.log(searchDataList.childNodes)
 }
 
 
@@ -246,33 +245,3 @@ function searchSong() {
 
   alert("Searching: " + inputContent + "...")
 }
-
-
-const loremNames = [
-  "Ayla",
-  "Jake",
-  "Sean",
-  "Henry",
-  "Brad",
-  "Stephen",
-  "Taylor",
-  "Timmy",
-  "Cathy",
-  "John",
-  "Amanda",
-  "Amara",
-  "Sam",
-  "Sandy",
-  "Danny",
-  "Ellen",
-  "Camille",
-  "Chloe",
-  "Emily",
-  "Nadia",
-  "Mitchell",
-  "Harvey",
-  "Lucy",
-  "Amy",
-  "Glen",
-  "Peter",
- ]

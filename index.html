@@ -17,10 +17,15 @@
     <div class="busqueda">
       <input  id="search-bar" 
               class="input-buscar" 
-              onkeyup=listSearches()
               type="search" 
               list="you-search-datalist" 
               placeholder="Buscar Musica...">
+      <!-- <input  id="search-bar" 
+              class="input-buscar" 
+              onkeyup="listAutocompleteSearches()"
+              type="search" 
+              list="you-search-datalist" 
+              placeholder="Buscar Musica..."> -->
       <datalist id="you-search-datalist">
         <option value="Something"></option>
         <option value="Lalo"></option>
@@ -55,8 +60,8 @@
       <img src="./resources/svg/play-outline.svg" style="height: 4rem;">
       <img src="./resources/svg/play-skip-forward-outline.svg" style="height: 4rem;">
     </div>
-    <button id="btnListarCanciones" name="bntListarCanciones" onclick=listarCanciones()>List Songs</button>
-    <button onclick="foo()">Search</button>
+    <button id="btndebugListSongs" name="bntdebugListSongs" onclick=debugListSongs()>List Songs</button>
+    <button onclick="listAutocompleteSearches()">Search</button>
     <div id="playlist-container">
       <!-- <div class="item-reproduccion">
         <div id="like-btn">
