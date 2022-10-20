@@ -217,7 +217,7 @@ function addSongToList(songName, authorName, userName) {
 
 function ListSong() {
   sName = inputSearch.value
-  addSongToList(sName, "authorName", "userName")
+  addSongToList(sName, "Author", "@Andres")
 }
 
 
