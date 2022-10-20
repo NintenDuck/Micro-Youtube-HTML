@@ -228,6 +228,7 @@ async function listAutocompleteSearches() {
   deleteDatalistOptions(searchDataList)
 
   newSearchList = await getSearchResults(searchQuery)
+  newSearchList = newSearchList.sort()
   console.log(newSearchList)
 
   addNewDatalistOptions(newSearchList)
