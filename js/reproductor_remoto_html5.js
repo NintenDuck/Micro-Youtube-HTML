@@ -1,3 +1,17 @@
+// Code to make the input check for key presses
+const inputSearch = document.getElementById("search-bar")
+console.log(inputSearch)
+inputSearch.addEventListener("keypress", (e) => {
+  if (e.key == "Enter") {
+    console.log("'Enter' key pressed, Searching for stuff!")
+    return
+  }
+
+  listAutocompleteSearches()
+  console.log(e.key)
+})
+
+// Youtube API stuff
 var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
 var personalID = "VP6isH0l3nLU-NIJs875nw"
 
@@ -101,6 +115,7 @@ $("#prev").on("click", function () {
 });
 
 // OWN CODE
+// Actual functions
 async function getSearchResults(querySearch) {
   const respuesta = await axios.get("https://www.googleapis.com/youtube/v3/search?", {
     params: {
