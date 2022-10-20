@@ -11,7 +11,7 @@
   <title>FLEX</title>
 </head>
 
-<body onload="onload">
+<body>
   <div class=content>
     <div class="busqueda">
       <input id="search-bar" class="input-buscar" type="search" list="you-search-datalist"
@@ -19,7 +19,7 @@
       <datalist id="you-search-datalist">
         <option value="Aun no hay resultados, escribe algo!"></option>
       </datalist>
-      <div class="search-icon-container" onclick="listAutocompleteSearches()">
+      <div class="search-icon-container" onclick="ListSong()">
         <img class="search-icon" src="resources/svg/search-outline.svg ">
       </div>
     </div>
@@ -45,7 +45,7 @@
       <img src="./resources/svg/play-outline.svg" style="height: 4rem;">
       <img src="./resources/svg/play-skip-forward-outline.svg" style="height: 4rem;">
     </div>
-    <button id="btndebugListSongs" name="bntdebugListSongs" onclick=debugListSongs()>List Songs</button>
+    <button id="btndebugListSongs" name="bntdebugListSongs" onclick=ListSong()>List Songs</button>
     <!-- <button onclick="listAutocompleteSearches()">Search</button> -->
     <div id="playlist-container">
       <!-- <div class="item-reproduccion">

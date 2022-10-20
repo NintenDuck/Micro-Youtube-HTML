@@ -1,18 +1,24 @@
 // Code to make the input check for key presses
 const inputSearch = document.getElementById("search-bar")
-console.log(inputSearch)
+let typeCounter = 0
+let typeCounterMax = 5
+
 inputSearch.addEventListener("keypress", (e) => {
   if (e.key == "Enter") {
-    console.log("'Enter' key pressed, Searching for stuff!")
+    ListSong()
     return
   }
-
-  listAutocompleteSearches()
-  console.log(e.key)
+  typeCounter += 1
+  console.log("Typing counter: " + typeCounter)
+  if (typeCounter >= typeCounterMax) {
+    listAutocompleteSearches()
+    typeCounter = 0
+  }
 })
 
 // Youtube API stuff
 var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
+// var apiKey = "AIzaSyAM7kcyAPdVOcwUUaF_9QwzfqG079iCSpQ"
 var personalID = "VP6isH0l3nLU-NIJs875nw"
 
 function load() {
@@ -117,22 +123,26 @@ $("#prev").on("click", function () {
 // OWN CODE
 // Actual functions
 async function getSearchResults(querySearch) {
-  const respuesta = await axios.get("https://www.googleapis.com/youtube/v3/search?", {
-    params: {
-      key: apiKey,
-      q: querySearch,
-      part: "snippet",
-      order: "relevance",
-      maxResults: 10,
-      type: "music"
+  try {
+    const respuesta = await axios.get("https://www.googleapis.com/youtube/v3/search?", {
+      params: {
+        key: apiKey,
+        q: querySearch,
+        part: "snippet",
+        order: "relevance",
+        maxResults: 10,
+        type: "music"
+      }
+    })
+    if (respuesta.status === 200) {
+      const busqueda = await respuesta.data.items
+      console.log("Busqueda satisfactoria!")
+      return listToSearchNames(busqueda)
+    } else {
+      console.log("[ERROR] Ocurrio algo en la solicitud")
     }
-  })
-  if (respuesta.status === 200) {
-    const busqueda = await respuesta.data.items
-    console.log("Busqueda satisfactoria!")
-    return listToSearchNames(busqueda)
-  } else {
-    console.log("[ERROR] Ocurrio algo en la solicitud")
+  } catch (error) {
+    console.log("API no autorizo peticion")   
   }
 }
 
@@ -205,12 +215,9 @@ function addSongToList(songName, authorName, userName) {
 }
 
 
-function debugListSongs() {
-  addSongToList("That's Life", "Frank Sinatra", "@Lain_Iwakura")
-  addSongToList("I love you Baby", "Frank Sinatra", "@Lain_Iwakura")
-  addSongToList("Bohemian Raphsody", "Queen", "@Lain_Iwakura")
-  addSongToList("Killer Queen", "Queen", "@Lain_Iwakura")
-  addSongToList("Another One Bites the Dust", "Queen", "@Lain_Iwakura")
+function ListSong() {
+  sName = inputSearch.value
+  addSongToList(sName, "authorName", "userName")
 }
 
 
