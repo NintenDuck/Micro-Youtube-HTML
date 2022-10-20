@@ -3,6 +3,8 @@ const inputSearch = document.getElementById("search-bar")
 let typeCounter = 0
 let typeCounterMax = 5
 
+inputSearch.value = ""
+
 inputSearch.addEventListener("keypress", (e) => {
   if (e.key == "Enter") {
     ListSong()
