@@ -132,7 +132,7 @@ async function getSearchResults(querySearch) {
         q: querySearch,
         part: "snippet",
         order: "relevance",
-        maxResults: 10,
+        maxResults: 20,
         type: "music"
       }
     })
