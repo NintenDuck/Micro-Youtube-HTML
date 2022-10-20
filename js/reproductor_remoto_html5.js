@@ -219,6 +219,8 @@ function addSongToList(songName, authorName, userName) {
 
 function ListSong() {
   sName = inputSearch.value
+  if (sName === "") return
+
   addSongToList(sName, "Author", "@Andres")
 }
 
