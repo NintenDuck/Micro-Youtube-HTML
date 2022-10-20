@@ -225,7 +225,7 @@ function ListSong() {
 
 async function listAutocompleteSearches() {
   searchDataList = document.getElementById("you-search-datalist")
-  searchQuery = document.getElementById("search-bar").value
+  searchQuery = inputSearch.value
 
   deleteDatalistOptions(searchDataList)
 
