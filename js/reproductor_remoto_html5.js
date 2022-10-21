@@ -11,7 +11,7 @@ inputSearch.addEventListener("keypress", (e) => {
     return
   }
   typeCounter += 1
-  console.log("Typing counter: " + typeCounter)
+  // console.log("Typing counter: " + typeCounter)
   if (typeCounter >= typeCounterMax) {
     listAutocompleteSearches()
     typeCounter = 0
@@ -19,8 +19,8 @@ inputSearch.addEventListener("keypress", (e) => {
 })
 
 // Youtube API stuff
-var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
-// var apiKey = "AIzaSyAM7kcyAPdVOcwUUaF_9QwzfqG079iCSpQ"
+// var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
+var apiKey = "AIzaSyAM7kcyAPdVOcwUUaF_9QwzfqG079iCSpQ"
 var personalID = "VP6isH0l3nLU-NIJs875nw"
 
 function load() {
@@ -138,7 +138,7 @@ async function getSearchResults(querySearch) {
     })
     if (respuesta.status === 200) {
       const busqueda = await respuesta.data.items
-      console.log("Busqueda satisfactoria!")
+      // console.log(busqueda)
       return listToSearchNames(busqueda)
     } else {
       console.log("[ERROR] Ocurrio algo en la solicitud")
@@ -151,7 +151,9 @@ async function getSearchResults(querySearch) {
 
 function listToSearchNames(resultsArray = []) {
   namesArray = resultsArray.map(x => {
-    return x.snippet.title
+    titleAuthorArray = [x.snippet.title, x.snippet.channelTitle]
+    // console.log(titleAuthorArray)
+    return titleAuthorArray
   })
 
   return namesArray
@@ -218,10 +220,10 @@ function addSongToList(songName, authorName, userName) {
 
 
 function ListSong() {
-  sName = inputSearch.value
+  sName = inputSearch.value.split(",")
   if (sName === "") return
 
-  addSongToList(sName, "Author", "@Andres")
+  addSongToList(sName[0], sName[1], "@Andres")
 }
 
 
@@ -232,8 +234,11 @@ async function listAutocompleteSearches() {
   deleteDatalistOptions(searchDataList)
 
   newSearchList = await getSearchResults(searchQuery)
-  newSearchList = newSearchList.sort()
-  console.log(newSearchList)
+  // Aqui hay que hacer que se imprima el nombre de la cancion
+  // y despues el autor
+
+  // newSearchList = newSearchList.sort()
+  // console.log(newSearchList)
 
   addNewDatalistOptions(newSearchList)
 }
@@ -254,7 +259,9 @@ function addNewDatalistOptions(newOptionList) {
   searchDataList = document.getElementById("you-search-datalist")
   newOptionList.forEach(search => {
     newOption = document.createElement("option")
-    newOption.value = search
+    // search[0] = song title
+    // search[1] = song channel/author
+    newOption.value = search[0] + ", " + search[1]
     searchDataList.appendChild(newOption)
   });
 }
