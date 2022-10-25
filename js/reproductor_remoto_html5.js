@@ -220,8 +220,9 @@ function addSongToList(songName, authorName, userName) {
 
 
 function ListSong() {
-  sName = inputSearch.value.split(",")
-  if (sName === "") return
+  inputValue = inputSearch.value
+  sName = inputValue.split(",")
+  if (inputValue === "") return
 
   addSongToList(sName[0], sName[1], "@Andres")
 }
