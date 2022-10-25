@@ -45,19 +45,6 @@ button :hover{
   /* border: 2px solid red; */
 }
 
-/* .cuadro {
-  align-self: center;
-  min-width: 85%;
-  margin: 1rem 0px 0px 0px;
-  border-radius: 10rem;
-  background-color: cornsilk;
-}
-
-.cuadro p {
-  color: gray;
-  margin: 8px 1.5rem;
-} */
-
 /* AUTOCOMPLETADO CON YOUTUBE */
 
 .input-buscar {
@@ -92,20 +79,31 @@ button :hover{
 
 /* LISTA DE YOUTUBE (GRAFICA) */
 
-.search-list-container {
-  display: block;
+.search-list-box {
+  display: flex;
+  flex-direction: column;
   background-color: antiquewhite;
   margin-top: 1rem;
   padding: 0px 2rem;
   height: 8rem;
   border-radius: 2rem;
   overflow: auto;
+  gap: 1rem;
 }
 
-.search-element-container {
+.search-elements-container {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
+  margin: 0.5rem 0px;
+  border: solid 2px gray;
+}
 
+.search-element-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0px;
 }
 
 /* REPRODUCTOR E INFORMACION DE VIDEO */
