@@ -58,6 +58,8 @@ button :hover{
   margin: 8px 1.5rem;
 } */
 
+/* AUTOCOMPLETADO CON YOUTUBE */
+
 .input-buscar {
   font-size: 1.1rem;
   min-height: 2rem;
@@ -86,6 +88,27 @@ button :hover{
   /* margin-top: 4px; */
   margin: 8px 4px 4px 4px
 }
+
+
+/* LISTA DE YOUTUBE (GRAFICA) */
+
+.search-list-container {
+  display: block;
+  background-color: antiquewhite;
+  margin-top: 1rem;
+  padding: 0px 2rem;
+  height: 8rem;
+  border-radius: 2rem;
+  overflow: auto;
+}
+
+.search-element-container {
+  display: flex;
+  flex-direction: row;
+
+}
+
+/* REPRODUCTOR E INFORMACION DE VIDEO */
 
 .ui-reproductor {
   display: flex;
