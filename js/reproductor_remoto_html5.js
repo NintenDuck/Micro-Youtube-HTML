@@ -285,6 +285,7 @@ async function listYTResults() {
   ytResultListElement.style.display = "flex"
   // Llamamos la busqueda de la API (y sus resultados)
   let ytSearchResults = await getSearchResults(inputSearch.value, "full", 20)
+  inputSearch.value = ""
   // console.log(ytSearchResults)
   // Por cada resultado en la busqueda
   ytSearchResults.forEach(result => {
