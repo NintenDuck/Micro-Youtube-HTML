@@ -73,8 +73,8 @@ button :hover{
 
 /* LISTA DE YOUTUBE (GRAFICA) */
 
-.search-list-box {
-  display: flex;
+#search-list-box {
+  display: none;
   flex-direction: column;
   background-color: antiquewhite;
   margin-top: 1rem;

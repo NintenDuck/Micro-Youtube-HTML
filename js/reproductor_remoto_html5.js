@@ -124,7 +124,7 @@ $("#prev").on("click", function () {
 
 // OWN CODE
 // Actual functions
-async function getSearchResults(querySearch) {
+async function getSearchResults(querySearch, searchTypeDefault = "short") {
   try {
     const respuesta = await axios.get("https://www.googleapis.com/youtube/v3/search?", {
       params: {
@@ -139,7 +139,11 @@ async function getSearchResults(querySearch) {
     if (respuesta.status === 200) {
       const busqueda = await respuesta.data.items
       // console.log(busqueda)
-      return listToSearchNames(busqueda)
+      if (searchTypeDefault === "short"){
+        return listToSearchNames(busqueda)
+      } else {
+        return busqueda
+      }
     } else {
       console.log("[ERROR] Ocurrio algo en la solicitud")
     }
@@ -152,7 +156,6 @@ async function getSearchResults(querySearch) {
 function listToSearchNames(resultsArray = []) {
   namesArray = resultsArray.map(x => {
     titleAuthorArray = [x.snippet.title, x.snippet.channelTitle]
-    // console.log(titleAuthorArray)
     return titleAuthorArray
   })
 
@@ -265,5 +268,28 @@ function addNewDatalistOptions(newOptionList) {
     // search[1] = song channel/author
     newOption.value = search[0] + ", " + search[1]
     searchDataList.appendChild(newOption)
+  });
+}
+
+
+// BUSQUEDA DE RESULTADOS EN LISTA (LA WEA QUE TIENE OVERFLOW)
+
+async function listYTResults() {
+  // Mostramos la caja de resultados
+  const ytResultList = document.getElementById("search-list-box")
+  ytResultList.style.display = "flex"
+  // Llamamos la busqueda de la API (y sus resultados)
+  let ytSearchResults = await getSearchResults(inputSearch.value, "full")
+  // console.log(ytSearchResults)
+  // Por cada resultado en la busqueda
+  ytSearchResults.forEach(result => {
+    // Asignamos: Resultado, Nombre del canal y Thumbnail a variables
+    let videoName = result.snippet.title
+    let videoChannel = result.snippet.channelTitle
+    let videoImageURL = result.snippet.thumbnails.default.url
+
+    // console.log("Video: " + videoName + "Channel: " + videoChannel + "Image URL: " + videoImageURL)
+    // Creamos una elemento dentro de la caja de busqueda
+    // Asignamos los valores a los elementos correspondientes (vease: nombre del video, canal y thumbnail)
   });
 }
