@@ -19,8 +19,8 @@ inputSearch.addEventListener("keypress", (e) => {
 })
 
 // Youtube API stuff
-// var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
-var apiKey = "AIzaSyAM7kcyAPdVOcwUUaF_9QwzfqG079iCSpQ"
+var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
+// var apiKey = "AIzaSyAM7kcyAPdVOcwUUaF_9QwzfqG079iCSpQ"
 var personalID = "VP6isH0l3nLU-NIJs875nw"
 
 function load() {
@@ -250,15 +250,19 @@ async function listAutocompleteSearches() {
 
 
 function deleteDatalistOptions(parentDataList) {
-  dataListChildren = parentDataList.childNodes
+  dataListChildren = parentDataList
 
   for (let i = 0; i < 7; i++) {
-    dataListChildren.forEach(children => {
-      children.remove()
-    })
+    deleteAllChildren(dataListChildren)
   }
 }
 
+function deleteAllChildren(parentElement) {
+  parentChildren = parentElement.childNodes
+  parentChildren.forEach(children => {
+    children.remove()
+  });
+}
 
 function addNewDatalistOptions(newOptionList) {
   searchDataList = document.getElementById("you-search-datalist")
@@ -275,9 +279,11 @@ function addNewDatalistOptions(newOptionList) {
 // BUSQUEDA DE RESULTADOS EN LISTA (LA WEA QUE TIENE OVERFLOW)
 
 async function listYTResults() {
+  const ytResultListElement = document.getElementById("search-list-box")
+  // TODO: Borramos todos los elementos anteriores antes de buscar nuevos
+  // deleteAllChildren(ytResultListElement)
   // Mostramos la caja de resultados
-  const ytResultList = document.getElementById("search-list-box")
-  ytResultList.style.display = "flex"
+  ytResultListElement.style.display = "flex"
   // Llamamos la busqueda de la API (y sus resultados)
   let ytSearchResults = await getSearchResults(inputSearch.value, "full")
   // console.log(ytSearchResults)
@@ -290,6 +296,36 @@ async function listYTResults() {
 
     // console.log("Video: " + videoName + "Channel: " + videoChannel + "Image URL: " + videoImageURL)
     // Creamos una elemento dentro de la caja de busqueda
-    // Asignamos los valores a los elementos correspondientes (vease: nombre del video, canal y thumbnail)
+    createYoutubeListElement(videoName, videoChannel, videoImageURL, ytResultListElement)
   });
+}
+
+
+function createYoutubeListElement(videoName = "", channelName = "", imageURL = "", outputElement) {
+  // Creamos los elementos necesarios
+  const elementContainer = document.createElement("div")
+  const imageElement = document.createElement("img")
+  const infoContainer = document.createElement("div")
+  const paragraphTitle = document.createElement("p")
+  const paragraphChannel = document.createElement("p")
+  const addButton = document.createElement("button")
+  
+  // Asignamos clases e id's
+  elementContainer.className = "search-elements-container"
+  imageElement.style.height = "6rem"
+  infoContainer.className = "search-element-info"
+  
+  // Asignamos los valores a los elementos correspondientes (vease: nombre del video, canal y thumbnail)
+  imageElement.src = imageURL
+  paragraphTitle.textContent = videoName
+  paragraphChannel.textContent = channelName
+  addButton.textContent = "Add This Song to Queue"
+  
+  // Adjuntamos los nuevos elementos al HTML
+  infoContainer.appendChild(paragraphTitle)
+  infoContainer.appendChild(paragraphChannel)
+  infoContainer.appendChild(addButton)
+  elementContainer.appendChild(imageElement)
+  elementContainer.appendChild(infoContainer)
+  outputElement.appendChild(elementContainer)
 }

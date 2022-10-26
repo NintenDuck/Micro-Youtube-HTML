@@ -79,8 +79,8 @@ button :hover{
   background-color: antiquewhite;
   margin-top: 1rem;
   padding: 0px 2rem;
-  height: 8rem;
-  border-radius: 2rem;
+  height: 12rem;
+  border-radius: 0.5rem;
   overflow: auto;
   gap: 1rem;
 }
@@ -88,16 +88,26 @@ button :hover{
 .search-elements-container {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   margin: 0.5rem 0px;
   border: solid 2px gray;
+  gap: 1rem;
+}
+
+.search-elements-container img {
+  padding-left: 2rem;
 }
 
 .search-element-info {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   align-items: flex-start;
   gap: 0px;
+}
+
+.search-element-info button {
+  align-self: flex-end;
 }
 
 /* REPRODUCTOR E INFORMACION DE VIDEO */
