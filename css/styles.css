@@ -15,12 +15,6 @@ h2 {
   text-align: center;
 }
 
-/* button {
-  margin-top: 1rem;
-  border: none;
-  border-radius: 5rem;
-} */
-
 button :hover{
   cursor: pointer;
 }
@@ -206,8 +200,6 @@ button :hover{
 #playlist-container {
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
-  padding-right: 1rem;
   border-top: 2px solid black;
   overflow: auto;
 }

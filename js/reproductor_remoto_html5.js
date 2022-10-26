@@ -225,6 +225,7 @@ function ListSong() {
   if (inputValue === "") return
 
   addSongToList(sName[0], sName[1], "@Andres")
+  inputSearch.value = ""
 }
 
 
