@@ -309,6 +309,7 @@ function createYoutubeListElement(videoName = "", channelName = "", imageURL = "
   const paragraphTitle = document.createElement("p")
   const paragraphChannel = document.createElement("p")
   const addButton = document.createElement("button")
+  const addListSongBtn = document.createElement("button")
   
   // Asignamos clases e id's
   elementContainer.className = "search-elements-container"
@@ -324,12 +325,18 @@ function createYoutubeListElement(videoName = "", channelName = "", imageURL = "
   addButton.addEventListener("click", () => {
     addSongToList(videoName, channelName, "@Andres")
   })
-  
+  addListSongBtn.style.backgroundColor = "crimson"
+  addListSongBtn.textContent = "X"
+  addListSongBtn.color = "white"
+  addListSongBtn.addEventListener("click", () => {
+    outputElement.style.display = "none"
+  })
   // Adjuntamos los nuevos elementos al HTML
   infoContainer.appendChild(paragraphTitle)
   infoContainer.appendChild(paragraphChannel)
   elementContainer.appendChild(imageElement)
   elementContainer.appendChild(infoContainer)
   elementContainer.appendChild(addButton)
+  elementContainer.appendChild(addListSongBtn)
   outputElement.appendChild(elementContainer)
 }
