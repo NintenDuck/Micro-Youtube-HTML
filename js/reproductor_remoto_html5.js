@@ -124,7 +124,7 @@ $("#prev").on("click", function () {
 
 // OWN CODE
 // Actual functions
-async function getSearchResults(querySearch, searchTypeDefault = "short") {
+async function getSearchResults(querySearch, searchTypeDefault = "short", suggestionAmount = 10) {
   try {
     const respuesta = await axios.get("https://www.googleapis.com/youtube/v3/search?", {
       params: {
@@ -132,7 +132,7 @@ async function getSearchResults(querySearch, searchTypeDefault = "short") {
         q: querySearch,
         part: "snippet",
         order: "relevance",
-        maxResults: 20,
+        maxResults: suggestionAmount,
         type: "music"
       }
     })
@@ -238,7 +238,7 @@ async function listAutocompleteSearches() {
 
   deleteDatalistOptions(searchDataList)
 
-  newSearchList = await getSearchResults(searchQuery)
+  newSearchList = await getSearchResults(searchQuery, "short", 10)
   // Aqui hay que hacer que se imprima el nombre de la cancion
   // y despues el autor
 
@@ -285,7 +285,7 @@ async function listYTResults() {
   // Mostramos la caja de resultados
   ytResultListElement.style.display = "flex"
   // Llamamos la busqueda de la API (y sus resultados)
-  let ytSearchResults = await getSearchResults(inputSearch.value, "full")
+  let ytSearchResults = await getSearchResults(inputSearch.value, "full", 20)
   // console.log(ytSearchResults)
   // Por cada resultado en la busqueda
   ytSearchResults.forEach(result => {
@@ -319,13 +319,17 @@ function createYoutubeListElement(videoName = "", channelName = "", imageURL = "
   imageElement.src = imageURL
   paragraphTitle.textContent = videoName
   paragraphChannel.textContent = channelName
+  paragraphChannel.style.color = "gray"
   addButton.textContent = "Add This Song to Queue"
+  addButton.addEventListener("click", () => {
+    addSongToList(videoName, channelName, "@Andres")
+  })
   
   // Adjuntamos los nuevos elementos al HTML
   infoContainer.appendChild(paragraphTitle)
   infoContainer.appendChild(paragraphChannel)
-  infoContainer.appendChild(addButton)
   elementContainer.appendChild(imageElement)
   elementContainer.appendChild(infoContainer)
+  elementContainer.appendChild(addButton)
   outputElement.appendChild(elementContainer)
 }
