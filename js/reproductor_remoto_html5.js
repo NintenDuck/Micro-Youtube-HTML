@@ -19,8 +19,9 @@ inputSearch.addEventListener("keypress", (e) => {
 })
 
 // Youtube API stuff
-var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
+// var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
 // var apiKey = "AIzaSyAM7kcyAPdVOcwUUaF_9QwzfqG079iCSpQ"
+var apiKey = "AIzaSyD0bshPcvN0bkILxIM3sZQkgunVZFrTsNE"
 var personalID = "VP6isH0l3nLU-NIJs875nw"
 
 function load() {
@@ -258,10 +259,7 @@ function deleteDatalistOptions(parentDataList) {
 }
 
 function deleteAllChildren(parentElement) {
-  parentChildren = parentElement.childNodes
-  parentChildren.forEach(children => {
-    children.remove()
-  });
+  parentElement.innerHTML = ""
 }
 
 function addNewDatalistOptions(newOptionList) {
@@ -281,7 +279,8 @@ function addNewDatalistOptions(newOptionList) {
 async function listYTResults() {
   const ytResultListElement = document.getElementById("search-list-box")
   // TODO: Borramos todos los elementos anteriores antes de buscar nuevos
-  // deleteAllChildren(ytResultListElement)
+  deleteAllChildren(ytResultListElement)
+  console.log("En teoria se deberia haber limpiado el input lmao")
   // Mostramos la caja de resultados
   ytResultListElement.style.display = "flex"
   // Llamamos la busqueda de la API (y sus resultados)
