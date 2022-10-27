@@ -1,7 +1,7 @@
 // Code to make the input check for key presses
 const inputSearch = document.getElementById("search-bar")
 let typeCounter = 0
-let typeCounterMax = 5
+let typeCounterMax = 3
 
 inputSearch.value = ""
 
@@ -320,13 +320,14 @@ function createYoutubeListElement(videoName = "", channelName = "", imageURL = "
   imageElement.src = imageURL
   paragraphTitle.textContent = videoName
   paragraphChannel.textContent = channelName
-  paragraphChannel.style.color = "gray"
-  addButton.textContent = "Add This Song to Queue"
+  paragraphChannel.style.color = "antiquewhite"
+  addButton.textContent = "Add Song"
+  addButton.style.backgroundColor = "palegreen"
   addButton.addEventListener("click", () => {
     addSongToList(videoName, channelName, "@Andres")
   })
   addListSongBtn.style.backgroundColor = "crimson"
-  addListSongBtn.textContent = "X"
+  addListSongBtn.textContent = "Close"
   addListSongBtn.color = "white"
   addListSongBtn.addEventListener("click", () => {
     outputElement.style.display = "none"

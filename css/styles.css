@@ -85,13 +85,17 @@ button :hover{
   gap: 1rem;
 }
 
+
+
 .search-elements-container {
   display: flex;
   flex-direction: row;
+  margin: 1rem 0px;
   padding-top: 1rem;
   padding-right: 4rem;
   padding: 0.5rem 0px;
-  border: solid 2px gray;
+  /* border: solid 2px gray; */
+  background-color: lightcoral;
   border-radius: 10px;
   gap: 1rem;
 }
@@ -112,6 +116,7 @@ button :hover{
   align-self: flex-end;
   border: solid gray;
   border-radius: 20px;
+  border: none;
   width: 2rem;
   height: 2rem;
   margin-bottom: 0.5rem;
