@@ -165,21 +165,21 @@ function listToSearchNames(resultsArray = []) {
 
 
 function addSongToList(songName, authorName, userName) {
-  let playListContainer = document.getElementById("playlist-container")
+  const playListContainer = document.getElementById("playlist-container")
 
   // new 'Song-List'
-  let newListSong = document.createElement("div")
+  const newListSong = document.createElement("div")
   newListSong.className = "item-reproduccion"
 
   // Create and assign value to new elements
-  heartIcon = document.createElement("img")
+  const heartIcon = document.createElement("img")
   heartIcon.src = "./resources/svg/heart-dislike-outline.svg"
   heartIcon.style.height = "2rem"
   heartIcon.addEventListener("mouseover", () => {
     heartIcon.style.cursor = "pointer"
   })
 
-  let hearthIconState = false
+  const hearthIconState = false
 
   heartIcon.addEventListener("click", () => {
     if (hearthIconState === false) {
@@ -191,16 +191,16 @@ function addSongToList(songName, authorName, userName) {
     }
   })
 
-  songNameElement = document.createElement("div")
+  const songNameElement = document.createElement("div")
   songNameElement.id = "song-name"
   songNameElement.textContent = songName
-  authorNameElement = document.createElement("div")
+  const authorNameElement = document.createElement("div")
   authorNameElement.id = "artist-name"
   authorNameElement.textContent = authorName
-  userNameElement = document.createElement("div")
+  const userNameElement = document.createElement("div")
   userNameElement.id = "user-name"
   userNameElement.textContent = userName
-  trashIcon = document.createElement("img")
+  const trashIcon = document.createElement("img")
   trashIcon.id = "trash-btn"
   trashIcon.src = "./resources/svg/trash-outline.svg"
   trashIcon.style.height = "2rem"
