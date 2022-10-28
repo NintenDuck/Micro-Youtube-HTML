@@ -15,12 +15,6 @@ h2 {
   text-align: center;
 }
 
-/* button {
-  margin-top: 1rem;
-  border: none;
-  border-radius: 5rem;
-} */
-
 button :hover{
   cursor: pointer;
 }
@@ -45,18 +39,7 @@ button :hover{
   /* border: 2px solid red; */
 }
 
-/* .cuadro {
-  align-self: center;
-  min-width: 85%;
-  margin: 1rem 0px 0px 0px;
-  border-radius: 10rem;
-  background-color: cornsilk;
-}
-
-.cuadro p {
-  color: gray;
-  margin: 8px 1.5rem;
-} */
+/* AUTOCOMPLETADO CON YOUTUBE */
 
 .input-buscar {
   font-size: 1.1rem;
@@ -87,10 +70,68 @@ button :hover{
   margin: 8px 4px 4px 4px
 }
 
+
+/* LISTA DE YOUTUBE (GRAFICA) */
+
+#search-list-box {
+  display: none;
+  flex-direction: column;
+  background-color: antiquewhite;
+  margin-top: 1rem;
+  padding: 0px 2rem;
+  height: max-content;
+  border-radius: 0.5rem;
+  overflow: auto;
+  gap: 1rem;
+}
+
+
+
+.search-elements-container {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0px;
+  padding-top: 1rem;
+  padding-right: 4rem;
+  padding: 0.5rem 0px;
+  /* border: solid 2px gray; */
+  background-color: lightcoral;
+  border-radius: 10px;
+  gap: 1rem;
+}
+
+.search-elements-container img {
+  padding-left: 2rem;
+}
+
+.search-element-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: flex-start;
+  gap: 0px;
+}
+
+.search-element-info button {
+  align-self: flex-end;
+  border: solid gray;
+  border-radius: 20px;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.5rem;
+  border: 2px solid red;
+}
+
+/* REPRODUCTOR E INFORMACION DE VIDEO */
+
 .ui-reproductor {
   display: flex;
   gap: 1rem;
+  margin-top: 1rem;
   padding: 1rem;
+  background-color: crimson;
+  border-radius: 2rem;
   justify-content: space-around;
   align-items: flex-end;
 }
@@ -99,16 +140,17 @@ button :hover{
   border: 4px solid black;
   background-color: crimson;
   /* flex-grow: 2; */
+  border-radius: 2rem;
   width: 400px;
   height: 250px;
 }
 
 .informacion {
+  color: antiquewhite;
   display: flex;
   flex-direction: column;
   flex-grow: 3;
   justify-content: flex-end;
-  /* border: 4px solid black; */
   width: 300px;
   height: 100%;
   text-align: left;
@@ -125,6 +167,9 @@ button :hover{
   flex-basis: 0px;
   flex-grow: 1;
   justify-content: center;
+  padding: 0rem 1rem;
+  background-color: antiquewhite;
+  border-radius: 2rem;
   width: 600px;
   height: 100%;
 }
@@ -137,7 +182,7 @@ button :hover{
 #progress-bar {
   display: flex;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   height: 0.5rem;
   background-color: gray;
   border-radius: 1rem;
@@ -164,7 +209,10 @@ button :hover{
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin: 1rem 0px 0rem 0px;
+  margin: 1rem 0px;
+  border: .5rem solid crimson;
+  background-color: antiquewhite;
+  border-radius: 5rem;
   /* border: 2px solid red; */
 }
 
@@ -175,8 +223,6 @@ button :hover{
 #playlist-container {
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
-  padding-right: 1rem;
   border-top: 2px solid black;
   overflow: auto;
 }
@@ -235,8 +281,4 @@ button :hover{
   border-left: 1px solid white;
   height: 2rem;
   width: 2rem;
-}
-
-#trash-btn :hover {
-  cursor: pointer;
 }

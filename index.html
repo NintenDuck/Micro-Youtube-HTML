@@ -6,31 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://www.youtube.com/iframe_api"></script>
-  <script src="./js/reproductor_remoto_html5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="./css/styles.css">
   <title>FLEX</title>
 </head>
 
-<body onload="onload">
+<body>
   <div class=content>
     <div class="busqueda">
-      <input  id="search-bar" 
-              class="input-buscar" 
-              onkeyup=listSearches()
-              type="search" 
-              list="you-search-datalist" 
-              placeholder="Buscar Musica...">
+      <input id="search-bar" class="input-buscar" type="search" list="you-search-datalist"
+        placeholder="Buscar Musica...">
       <datalist id="you-search-datalist">
-        <option value="Something"></option>
-        <option value="Lalo"></option>
-        <option value="Lain"></option>
-        <option value="Iwakura"></option>
-        <option value="Infornography"></option>
-        <option value="About us"></option>
+        <option value="Aun no hay resultados, escribe algo!"></option>
       </datalist>
-      <div class="search-icon-container">
+      <div class="search-icon-container" onclick="listYTResults()">
         <img class="search-icon" src="resources/svg/search-outline.svg ">
       </div>
+    </div>
+    <div id="search-list-box">
+      <!-- AQUI VAN A IR LOS ELEMENTOS DE YOUTUBE -->
     </div>
     <div class="ui-reproductor">
       <div id="video-youtube-empotrado"></div>
@@ -54,21 +48,9 @@
       <img src="./resources/svg/play-outline.svg" style="height: 4rem;">
       <img src="./resources/svg/play-skip-forward-outline.svg" style="height: 4rem;">
     </div>
-    <button id="btnListarCanciones" name="bntListarCanciones" onclick=listarCanciones()>List Songs</button>
-    <div id="playlist-container">
-      <div class="item-reproduccion">
-        <div id="like-btn">
-          <img src="./resources/svg/heart-outline.svg" style="height: 2rem;">
-        </div>
-        <div id="song-name">Lorem ipsum, dolor sit amet consectetur.</div>
-        <div id="artist-name">Lorem ipsum dolor</div>
-        <div id="user-name">@Lain_Iwakura</div>
-        <div id="trash-btn">
-          <img src="./resources/svg/trash-outline.svg" style="height: 2rem;">
-        </div>
-      </div>
-    </div>
+    <div id="playlist-container"></div>
   </div>
+  <script src="./js/reproductor_remoto_html5.js"></script>
 </body>
 
 </html>
