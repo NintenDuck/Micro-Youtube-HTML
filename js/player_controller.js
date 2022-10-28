@@ -3,16 +3,17 @@
 // **********************************************************
 
 function playSong() {
-    
     changePlayButtonState()
 }
 
 function nextVideo() {
     player.nextVideo()
-}
-
-function previousVideo() {
+    changePlayButtonState()
+  }
+  
+  function previousVideo() {
     player.previousVideo()
+    changePlayButtonState()
 }
 
 function pauseSong() {
@@ -26,7 +27,16 @@ const btnStates = {
   "Paused": 2
 }
 
-// TODO: Make functions modular
+function onPlayerStateChanged(event) {
+  if (event.data == YT.PlayerState.PLAYING) {
+    currentBtnState = btnStates["Playing"]
+  }
+  else if (event.data == YT.PlayerState.PAUSED) {
+    currentBtnState = btnStates["Paused"]
+  }
+  else console.log("[REPRODUCTOR] Me encuentro en el estado: " + event.data)
+}
+
 let currentBtnState = btnStates["Paused"]
 
 function changePlayButtonState() {
@@ -34,15 +44,15 @@ function changePlayButtonState() {
 
   if (currentBtnState == btnStates["Paused"]){
     playBtnElement.src =  "./resources/svg/pause.png"
-    playBtnElement.style.height = "3rem"
+    playBtnElement.style.height = "2.5rem"
     
-    currentBtnState = btnStates["Playing"]
+    // currentBtnState = btnStates["Playing"]
     player.playVideo()
   } else if (currentBtnState == btnStates["Playing"]) {
     playBtnElement.src =  "./resources/svg/play-outline.svg"
     playBtnElement.style.height = "4rem"
     
-    currentBtnState = btnStates["Paused"]
+    // currentBtnState = btnStates["Paused"]
     player.pauseVideo()
   }
 
@@ -67,7 +77,8 @@ function onYouTubeIframeAPIReady() {
         playlist: 'knp2WGkIpLw,qelGSWu4s_U'
     },
     events: {
-      'onReady': onPlayerReady
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChanged
     }
   });
 }
