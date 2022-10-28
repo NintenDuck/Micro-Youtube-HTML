@@ -136,7 +136,7 @@ button :hover{
   align-items: flex-end;
 }
 
-#video-youtube-empotrado {
+#player {
   border: 4px solid black;
   background-color: crimson;
   /* flex-grow: 2; */

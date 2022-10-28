@@ -27,7 +27,7 @@
       <!-- AQUI VAN A IR LOS ELEMENTOS DE YOUTUBE -->
     </div>
     <div class="ui-reproductor">
-      <div id="video-youtube-empotrado"></div>
+      <div id="player"></div>
       <div class="informacion">
         <h3 id="id-nombre-reproductor">Music Box</h3>
         <h2 id="id-nombre-cancion" style="text-align: left;">Nombre de la cancion</h2>
@@ -45,11 +45,12 @@
     </div>
     <div id="controles-reproduccion">
       <img src="./resources/svg/play-skip-back-outline.svg" style="height: 4rem;">
-      <img src="./resources/svg/play-outline.svg" style="height: 4rem;">
+      <img src="./resources/svg/play-outline.svg" style="height: 4rem;" onclick="stopVideo()">
       <img src="./resources/svg/play-skip-forward-outline.svg" style="height: 4rem;">
     </div>
     <div id="playlist-container"></div>
   </div>
+  <script src="js/player_controller.js"></script>
   <script src="./js/reproductor_remoto_html5.js"></script>
 </body>
 
