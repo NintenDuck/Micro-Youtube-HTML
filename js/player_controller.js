@@ -2,8 +2,8 @@
 // FUNCIONES PARA CONTROLAR REPRODUCTOR
 // **********************************************************
 
-function playVideo() {
-    player.playVideo()
+function playSong() {
+    
     changePlayButtonState()
 }
 
@@ -15,28 +15,38 @@ function previousVideo() {
     player.previousVideo()
 }
 
-function stopVideo() {
-    player.stopVideo();
-  }
+function pauseSong() {
+    player.pauseVideo();
+}
 
-  // btnStates[0] = Reproduciendo
-  // btnStates[1] = Pausado
-let btnStates = ["Play", "Paused"]
-let currentBtnState = "Paused"
+// MANEJO DEL BOTON DE REPRODUCCION
+const btnStates = {
+  "Stopped":0,
+  "Playing": 1,
+  "Paused": 2
+}
+
+// TODO: Make functions modular
+let currentBtnState = btnStates["Paused"]
 
 function changePlayButtonState() {
   const playBtnElement = document.getElementById("controls-play")
 
-  if (currentBtnState == btnStates[1]){
+  if (currentBtnState == btnStates["Paused"]){
     playBtnElement.src =  "./resources/svg/pause.png"
     playBtnElement.style.height = "3rem"
-    currentBtnState = btnStates[0]
-  } else if (currentBtnState == btnStates[0]) {
+    
+    currentBtnState = btnStates["Playing"]
+    player.playVideo()
+  } else if (currentBtnState == btnStates["Playing"]) {
     playBtnElement.src =  "./resources/svg/play-outline.svg"
     playBtnElement.style.height = "4rem"
-    currentBtnState = btnStates[1]
+    
+    currentBtnState = btnStates["Paused"]
+    player.pauseVideo()
   }
-  console.log("Current butto state: " + currentBtnState)
+
+  return currentBtnState
 }
 
 // **********************************************************
