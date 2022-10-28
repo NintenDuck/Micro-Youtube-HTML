@@ -43,13 +43,13 @@ function changePlayButtonState() {
   const playBtnElement = document.getElementById("controls-play")
 
   if (currentBtnState == btnStates["Paused"]){
-    playBtnElement.src =  "./resources/svg/pause.png"
-    playBtnElement.style.height = "2.5rem"
+    playBtnElement.src =  "./resources/svg/pause-circle-outline.svg"
+    playBtnElement.style.height = "4rem"
     
     // currentBtnState = btnStates["Playing"]
     player.playVideo()
   } else if (currentBtnState == btnStates["Playing"]) {
-    playBtnElement.src =  "./resources/svg/play-outline.svg"
+    playBtnElement.src =  "./resources/svg/play-circle-outline.svg"
     playBtnElement.style.height = "4rem"
     
     // currentBtnState = btnStates["Paused"]
