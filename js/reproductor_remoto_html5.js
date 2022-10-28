@@ -33,12 +33,12 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player('video-youtube-empotrado', {
     width: '400px',
     height: '250px',
-    videoId: 'l4A1EzoXzFw',
+    videoId: 'knp2WGkIpLw',
     playerVars: {
       color: 'white',
-      playlist: 'l4A1EzoXzFw,l4A1EzoXzFw'
+      playlist: 'knp2WGkIpLw,qelGSWu4s_U'
     },
-    events: {
+    events: { 
       onReady: initializar
     }
   });
@@ -179,7 +179,7 @@ function addSongToList(songName, authorName, userName) {
     heartIcon.style.cursor = "pointer"
   })
 
-  const hearthIconState = false
+  let hearthIconState = false
 
   heartIcon.addEventListener("click", () => {
     if (hearthIconState === false) {
@@ -278,8 +278,9 @@ function addNewDatalistOptions(newOptionList) {
 
 async function listYTResults() {
   const ytResultListElement = document.getElementById("search-list-box")
-  // TODO: Borramos todos los elementos anteriores antes de buscar nuevos
+
   deleteAllChildren(ytResultListElement)
+  
   console.log("En teoria se deberia haber limpiado el input lmao")
   // Mostramos la caja de resultados
   ytResultListElement.style.display = "flex"
