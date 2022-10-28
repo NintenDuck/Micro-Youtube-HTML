@@ -1,4 +1,18 @@
 // **********************************************************
+// HACER QUE EN CLICK CAMBIE WEA
+// **********************************************************
+
+const skipForwardBtn = document.getElementById("controls-next")
+const skipPrevBtn = document.getElementById("controls-prev")
+const playBtn = document.getElementById("controls-play")
+
+playBtn.addEventListener("mousedown", () => {playBtn.src = "./resources/svg/ellipse.svg"})
+playBtn.addEventListener("mouseup", () => {playBtn.src = "./resources/svg/play-circle-outline.svg"})
+skipForwardBtn.addEventListener("mousedown", () => {skipForwardBtn.src = "./resources/svg/ellipse.svg"})
+skipForwardBtn.addEventListener("mouseup", () => {skipForwardBtn.src = "./resources/svg/play-skip-forward-circle-outline.svg"})
+skipPrevBtn.addEventListener("mousedown", () => {skipPrevBtn.src = "./resources/svg/ellipse.svg"})
+skipPrevBtn.addEventListener("mouseup", () => {skipPrevBtn.src = "./resources/svg/play-skip-back-circle-outline.svg"})
+// **********************************************************
 // FUNCIONES PARA CONTROLAR REPRODUCTOR
 // **********************************************************
 
