@@ -6,7 +6,7 @@ function onload(){
     onYouTubeIframeAPIReady()
 }
 
-var player;
+var player
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     height: '400px',
@@ -19,9 +19,10 @@ function onYouTubeIframeAPIReady() {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChanged
     }
-  });
+  })
 }
 
 function onPlayerReady(event) {
-  event.target.playVideo();
+  event.target.setVolume(100)
+  event.target.playVideo()
 }
