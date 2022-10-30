@@ -13,24 +13,6 @@ skipForwardBtn.addEventListener("mouseup", () => {skipForwardBtn.src = "./resour
 skipPrevBtn.addEventListener("mousedown", () => {skipPrevBtn.src = "./resources/svg/ellipse.svg"})
 skipPrevBtn.addEventListener("mouseup", () => {skipPrevBtn.src = "./resources/svg/play-skip-back-circle-outline.svg"})
 
-var debugList0 = ["_QLsr_jR5gs", "KqG5481WqMI", "r-HloEoBPDI"]
-var debugList1 = ["r-HloEoBPDI", "KqG5481WqMI", "KqG5481WqMI"]
-
-function foo(songLists) {
-  // player.cuePlaylist( debugList,
-  //                     0)
-  for (i = 0; i < 1; i++) {
-    player.loadPlaylist(debugList0,0)
-  }
-}
-
-function bar(songLists) {
-  // player.cuePlaylist( debugList,
-  //                     0)
-  for (i = 0; i < 1; i++) {
-    player.loadPlaylist(debugList1,0)
-  }
-}
 // **********************************************************
 // FUNCIONES PARA CONTROLAR REPRODUCTOR
 // **********************************************************
@@ -55,7 +37,7 @@ function pauseSong() {
 
 // MANEJO DEL BOTON DE REPRODUCCION
 const btnStates = {
-  "Stopped":0,
+  "Stopped": 0,
   "Playing": 1,
   "Paused": 2
 }
