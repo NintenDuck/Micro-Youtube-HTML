@@ -49,7 +49,6 @@ function onPlayerStateChanged(event) {
   else if (event.data == YT.PlayerState.PAUSED) {
     currentBtnState = btnStates["Paused"]
   }
-  else console.log("[REPRODUCTOR] Me encuentro en el estado: " + event.data)
 }
 
 let currentBtnState = btnStates["Paused"]
