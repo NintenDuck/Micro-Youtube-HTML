@@ -6,16 +6,20 @@ let msgFormat = {
     message: ""
 }
 
-// let stringifiedMsg = JSON.stringify(msgFormat)
-// console.log(stringifiedMsg)
-// console.log(typeof(stringifiedMsg))
 
 ws.addEventListener("open", () => {
-    console.log("We are connected")
+    console.log("[SERVER] We are connected")
     
-    ws.send(JSON.stringify(msgFormat))
+    sendJsonMessage("Something", ws)
 })
 
-ws.addEventListener("message", ({ dataReceived }) => {
-  console.log(JSON.stringify(dataReceived))
+ws.addEventListener("message", ( {data} ) => {
+    console.log(data)
 })
+
+
+function sendJsonMessage(message="", websocket) {
+    msgFormat.message = message
+    let messageSent = websocket.send(JSON.stringify(msgFormat))
+    return messageSent
+}

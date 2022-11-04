@@ -7,7 +7,7 @@ const wss = new WebSocket.Server({
 usersConnected = 0
 
 wss.on("connection", (ws) => {
-    countUsersConnected(ws)
+    countUsersConnected()
 
     ws.on("message", data => {onMessage(data, ws)})
 
@@ -15,21 +15,33 @@ wss.on("connection", (ws) => {
 })
 
 
-function countUsersConnected(websocket) {
+function countUsersConnected() {
     usersConnected += 1
     serverMessage("New client just connected")
     serverMessage("Clients connected: " + usersConnected)
 }
-function onMessage(messageData, websocket) {
-    serverMessage("Client just sent this message:")
-    console.log(messageData)
 
-    websocket.send("[SERVER] You have connected succesfully to the server!")
+function onMessage(messageData, websocket) {
+    msgDict = jsonStrToDictionary(bufferToString(messageData))
+    serverMessage("Client just sent this data:")
+    console.log(msgDict)
+    websocket.send("[SERVER] You are connected to the server")
 }
 function onCloseConnection() {
     console.log("Client has disconnected")
     usersConnected -= 1
     serverMessage(`[SERVER] Clients connected: ${usersConnected}`)
+}
+
+
+function bufferToString(buffer) {
+    newString = buffer.toString()
+    return newString
+}
+
+
+function jsonStrToDictionary(jsonStr) {
+    return JSON.parse(jsonStr)
 }
 
 
