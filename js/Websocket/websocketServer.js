@@ -10,8 +10,7 @@ wss.on("connection", (ws) => {
     countUsersConnected()
 
     ws.on("message", data => {onMessage(data, ws)})
-
-    ws.on("close", () => {onCloseConnection()})
+    ws.on("close", (reason) => {onCloseConnection(reason)})
 })
 
 
@@ -27,10 +26,10 @@ function onMessage(messageData, websocket) {
     console.log(msgDict)
     websocket.send("[SERVER] You are connected to the server")
 }
-function onCloseConnection() {
+function onCloseConnection(disconnectReason) {
     console.log("Client has disconnected")
     usersConnected -= 1
-    serverMessage(`[SERVER] Clients connected: ${usersConnected}`)
+    serverMessage(`Clients connected: ${usersConnected}`)
 }
 
 
@@ -38,13 +37,9 @@ function bufferToString(buffer) {
     newString = buffer.toString()
     return newString
 }
-
-
 function jsonStrToDictionary(jsonStr) {
     return JSON.parse(jsonStr)
 }
-
-
 function serverMessage(message) {
     console.log(`[SERVER] ${message}`)
 }
