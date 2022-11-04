@@ -27,7 +27,7 @@ function onMessage(messageData, websocket) {
     websocket.send("[SERVER] You are connected to the server")
 }
 function onCloseConnection(disconnectReason) {
-    console.log("Client has disconnected")
+    serverMessage("Client has disconnected")
     usersConnected -= 1
     serverMessage(`Clients connected: ${usersConnected}`)
 }
