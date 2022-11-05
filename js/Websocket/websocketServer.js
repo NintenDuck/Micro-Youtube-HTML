@@ -10,7 +10,7 @@ wss.on("connection", (ws) => {
     countUsersConnected()
 
     ws.on("message", data => {onMessage(data, ws)})
-    ws.on("close", (reason) => {onCloseConnection(reason)})
+    ws.on("close", reason => {onCloseConnection(reason)})
 })
 
 
