@@ -42,8 +42,9 @@ button :hover{
   font-size: xx-large;
 }
 
-.busqueda {
-  display: flex;
+#busqueda {
+  display: none;
+  /* display: flex; */
   flex-direction: row;
   justify-content: center;
   margin-top: 1rem;

@@ -21,7 +21,7 @@ function countUsersConnected() {
 }
 
 function onMessage(messageData, websocket) {
-    msgDict = jsonStrToDictionary(bufferToString(messageData))
+    msgDict = bufferToDictionary(messageData)
     serverMessage("Client just sent this data:")
     console.log(msgDict)
     websocket.send("[SERVER] You are connected to the server")
@@ -33,13 +33,12 @@ function onCloseConnection(disconnectReason) {
 }
 
 
-function bufferToString(buffer) {
+function bufferToDictionary(buffer) {
     newString = buffer.toString()
-    return newString
+    newDictionary = JSON.parse(newString)
+    return newDictionary
 }
-function jsonStrToDictionary(jsonStr) {
-    return JSON.parse(jsonStr)
-}
+
 function serverMessage(message) {
     console.log(`[SERVER] ${message}`)
 }

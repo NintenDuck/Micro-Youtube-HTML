@@ -1,12 +1,18 @@
 const loginElement = document.getElementById("user-input-container")
 const loginInput = document.getElementById("user-input")
 const loginButton = document.getElementById("user-button")
+const busquedaElement = document.getElementById("busqueda")
+
+console.log(busquedaElement)
 
 loginButton.addEventListener("click", () => {
+    login()
+})
+
+function login() {
     if (loginElement.value === "") return
 
     msgFormat.userName = loginInput.value
-    console.log(loginElement.value)
     loginElement.style.display = "none"
-    sendMusicInfo("", ws)
-})
+    busquedaElement.style.display = "flex"
+}
