@@ -1,16 +1,14 @@
-let ws = new WebSocket("ws://localhost:8008")
+var ws = new WebSocket("ws://localhost:8008")
 
-let username = "Lain"
+let defaultUsername = "default"
 let msgFormat = {
-    userName: username,
-    message: ""
+    userName: defaultUsername,
+    songData: ""
 }
 
 
 ws.addEventListener("open", () => {
     console.log("[SERVER] We are connected")
-    
-    sendJsonMessage("Something", ws)
 })
 
 ws.addEventListener("message", ( {data} ) => {
@@ -27,8 +25,8 @@ function reconnectionTry() {
     console.log("Retrying connection to server (not really)")
 }
 
-function sendJsonMessage(message="", websocket) {
-    msgFormat.message = message
+function sendMusicInfo(songData="", websocket) {
+    msgFormat.songData = songData
     let messageSent = websocket.send(JSON.stringify(msgFormat))
     return messageSent
 }
