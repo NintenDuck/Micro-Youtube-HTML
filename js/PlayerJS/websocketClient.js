@@ -5,9 +5,11 @@
 var ws = new WebSocket("ws://localhost:8008")
 
 let defaultUsername = "default"
+
 let msgFormat = {
     userName: defaultUsername,
-    songData: ""
+    songName: "some song name",
+    songAuthor: "some author"
 }
 
 
@@ -39,8 +41,9 @@ function reconnectionTry() {
 
 // Envia el nombre del usuario y el nombre de una cancion
 // return: el mensaje a enviar
-function sendMusicInfo(songData="", websocket) {
-    msgFormat.songData = songData
+function sendMusicInfo(songName="",songAuthor="", websocket) {
+    msgFormat.songName = songName
+    msgFormat.songAuthor = songAuthor
     let messageSent = websocket.send(JSON.stringify(msgFormat))
     return messageSent
 }

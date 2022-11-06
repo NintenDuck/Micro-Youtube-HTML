@@ -15,4 +15,5 @@ function login() {
     msgFormat.userName = loginInput.value
     loginElement.style.display = "none"
     busquedaElement.style.display = "flex"
+    console.log(msgFormat)
 }

@@ -142,8 +142,9 @@ function ListSong() {
   inputValue = inputSearch.value
   sName = inputValue.split(",")
   if (inputValue === "") return
-
-  addSongToList(sName[0], sName[1], "@Andres")
+  
+  sendMusicInfo(sName[0],sName[1], ws)
+  addSongToList(sName[0], sName[1], msgFormat.userName)
   inputSearch.value = ""
 }
 
