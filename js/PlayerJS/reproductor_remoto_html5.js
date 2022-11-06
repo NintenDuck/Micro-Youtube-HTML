@@ -1,4 +1,6 @@
+// **********************************************************
 // Code to make the input check for key presses
+// **********************************************************
 const inputSearch = document.getElementById("search-bar")
 let typeCounter = 0
 let typeCounterMax = 3
@@ -26,7 +28,10 @@ var personalID = "VP6isH0l3nLU-NIJs875nw"
 
 
 // OWN CODE
-// Actual functions
+
+// **********************************************************
+// FUNCION PARA LLAMAR RESULTADOS DE YOUTUBE
+// **********************************************************
 async function getSearchResults(querySearch, searchTypeDefault = "short", suggestionAmount = 10) {
   try {
     const respuesta = await axios.get("https://www.googleapis.com/youtube/v3/search?", {
@@ -56,6 +61,7 @@ async function getSearchResults(querySearch, searchTypeDefault = "short", sugges
 }
 
 
+// REGRESA UN ARREGLO CON EL TITULO Y EL NOMBRE DEL CANAL DE LA BUSQUEDA
 function listToSearchNames(resultsArray = []) {
   namesArray = resultsArray.map(x => {
     titleAuthorArray = [x.snippet.title, x.snippet.channelTitle]
@@ -65,7 +71,11 @@ function listToSearchNames(resultsArray = []) {
   return namesArray
 }
 
-
+// ADIERE UNA CANCION A LA LISTA DE REPRODUCCION
+// CON LOS SIGUIENTES PARAMETROS:
+// param1@: nombre de la cancion:             STRING
+// param1@: nombre del artista:               STRING
+// param1@: nombre del usuario que la envio:  STRING
 function addSongToList(songName, authorName, userName) {
   const playListContainer = document.getElementById("playlist-container")
 
@@ -125,6 +135,9 @@ function addSongToList(songName, authorName, userName) {
 }
 
 
+// TOMA LO QUE HAY EN EL INPUT DEL BUSCADOR
+// Y LO ADIERE A LA LISTA DE REPRODUCCION DE ABAJO
+
 function ListSong() {
   inputValue = inputSearch.value
   sName = inputValue.split(",")
@@ -135,6 +148,9 @@ function ListSong() {
 }
 
 
+// ACTUALIZA LA LISTA DE BUSQUEDAS
+// EN EL ELEMENTO DE AUTOCOMPLETE
+
 async function listAutocompleteSearches() {
   searchDataList = document.getElementById("you-search-datalist")
   searchQuery = inputSearch.value
@@ -142,41 +158,43 @@ async function listAutocompleteSearches() {
   deleteDatalistOptions(searchDataList)
 
   newSearchList = await getSearchResults(searchQuery, "short", 10)
-  // Aqui hay que hacer que se imprima el nombre de la cancion
-  // y despues el autor
-
-  // newSearchList = newSearchList.sort()
-  // console.log(newSearchList)
 
   addNewDatalistOptions(newSearchList)
 }
 
 
+// ELIMINA LOS DATOS PREVIOS DEL DATALIST (BUSQUEDAS DE YOUTUBE ANTERIORES)
+
 function deleteDatalistOptions(parentDataList) {
   dataListChildren = parentDataList
 
-  for (let i = 0; i < 7; i++) {
-    deleteAllChildren(dataListChildren)
-  }
+  for (let i = 0; i < 7; i++) {                                 // HOT-FIX: HACE UN BUCLE VARIAS VECES
+    deleteAllChildren(dataListChildren)                         //          PARA QUE PUEDA ACTUALIZARSE
+  }                                                             //          CORRECTAMENTE
 }
+
+// ELIMINA TODOS LOS HIJOS DE UN ELEMENTO
+// (PRINCIPALMENTE USADO EN LA BUSQUEDA AMPLIADA)
 
 function deleteAllChildren(parentElement) {
   parentElement.innerHTML = ""
 }
 
+
+// ADIERE NUEVOS ELEMENTOS (BUSQUEDAS)
+// APARTIR DE UN ARREGLO DE STRINGS
+
 function addNewDatalistOptions(newOptionList) {
   searchDataList = document.getElementById("you-search-datalist")
   newOptionList.forEach(search => {
     newOption = document.createElement("option")
-    // search[0] = song title
-    // search[1] = song channel/author
     newOption.value = search[0] + ", " + search[1]
     searchDataList.appendChild(newOption)
   });
 }
 
 
-// BUSQUEDA DE RESULTADOS EN LISTA (LA WEA QUE TIENE OVERFLOW)
+// BUSQUEDA DE RESULTADOS EN LISTA DE BUSQUEDA EXTENDIDA
 
 async function listYTResults() {
   const ytResultListElement = document.getElementById("search-list-box")
@@ -184,25 +202,20 @@ async function listYTResults() {
   deleteAllChildren(ytResultListElement)
   
   console.log("En teoria se deberia haber limpiado el input lmao")
-  // Mostramos la caja de resultados
   ytResultListElement.style.display = "flex"
-  // Llamamos la busqueda de la API (y sus resultados)
   let ytSearchResults = await getSearchResults(inputSearch.value, "full", 20)
   inputSearch.value = ""
-  // console.log(ytSearchResults)
-  // Por cada resultado en la busqueda
   ytSearchResults.forEach(result => {
-    // Asignamos: Resultado, Nombre del canal y Thumbnail a variables
     let videoName = result.snippet.title
     let videoChannel = result.snippet.channelTitle
     let videoImageURL = result.snippet.thumbnails.default.url
 
-    // console.log("Video: " + videoName + "Channel: " + videoChannel + "Image URL: " + videoImageURL)
-    // Creamos una elemento dentro de la caja de busqueda
     createYoutubeListElement(videoName, videoChannel, videoImageURL, ytResultListElement)
   });
 }
 
+
+// ADIERE UN ELEMENTO NUEVO A LA BUSQUEDA EXTENDIDA
 
 function createYoutubeListElement(videoName = "", channelName = "", imageURL = "", outputElement) {
   // Creamos los elementos necesarios

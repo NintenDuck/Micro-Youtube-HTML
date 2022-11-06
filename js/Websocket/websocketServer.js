@@ -1,3 +1,7 @@
+// **********************************************************
+// DECLARACION DEL SERVIDOR
+// **********************************************************
+
 const WebSocket = require("ws")
 
 const wss = new WebSocket.Server({
@@ -13,6 +17,9 @@ wss.on("connection", (ws) => {
     ws.on("close", reason => {onCloseConnection(reason)})
 })
 
+// **********************************************************
+// FUNCIONES PARA CONTROLAR LOS ESTADOS DEL WEBSOCKET SERVER
+// **********************************************************
 
 function countUsersConnected() {
     usersConnected += 1
@@ -32,13 +39,19 @@ function onCloseConnection(disconnectReason) {
     serverMessage(`Clients connected: ${usersConnected}`)
 }
 
+// **********************************************************
+// FUNCIONES DE AYUDA
+// **********************************************************
 
+// Transforma el buffer de un mensaje (del cliente)
+// a un diccionario de strings
 function bufferToDictionary(buffer) {
     newString = buffer.toString()
     newDictionary = JSON.parse(newString)
     return newDictionary
 }
 
+// Funcion debug para imprimir algo como "Servidor"
 function serverMessage(message) {
     console.log(`[SERVER] ${message}`)
 }

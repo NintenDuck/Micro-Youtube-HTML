@@ -34,8 +34,9 @@ function nextVideo() {
 function pauseSong() {
     player.pauseVideo();
 }
-
-// MANEJO DEL BOTON DE REPRODUCCION
+// **********************************************************
+// MANEJO DE ESTADOS DE CONTROLES DE REPRODUCCION
+// **********************************************************
 const btnStates = {
   "Stopped": 0,
   "Playing": 1,
@@ -53,6 +54,9 @@ function onPlayerStateChanged(event) {
 
 let currentBtnState = btnStates["Paused"]
 
+// CAMBIA EL ICONO DE PLAY DEPENDIENDO
+// EL ESTADO DEL REPRODUCTOR DE VIDEO
+// return: El estado del boton actualmente
 function changePlayButtonState() {
   const playBtnElement = document.getElementById("controls-play")
 
@@ -60,13 +64,11 @@ function changePlayButtonState() {
     playBtnElement.src =  "./resources/svg/pause-circle-outline.svg"
     playBtnElement.style.height = "4rem"
     
-    // currentBtnState = btnStates["Playing"]
     player.playVideo()
   } else if (currentBtnState == btnStates["Playing"]) {
     playBtnElement.src =  "./resources/svg/play-circle-outline.svg"
     playBtnElement.style.height = "4rem"
     
-    // currentBtnState = btnStates["Paused"]
     player.pauseVideo()
   }
 
