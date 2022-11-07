@@ -37,7 +37,6 @@ function onMessage(messageData, websocket) {
 
     serverMessage("Client just sent this data:")
     console.log(msgDict)
-    websocket.send("[SERVER] You are connected to the server")
 }
 function onCloseConnection(disconnectReason) {
     serverMessage("Client has disconnected")
