@@ -241,7 +241,8 @@ function createYoutubeListElement(videoName = "", channelName = "", imageURL = "
   addButton.textContent = "Add Song"
   addButton.style.backgroundColor = "palegreen"
   addButton.addEventListener("click", () => {
-    addSongToList(videoName, channelName, "@Andres")
+    // addSongToList(videoName, channelName, "@Andres")
+    sendMusicInfo(videoName, channelName, ws)
   })
   addListSongBtn.style.backgroundColor = "crimson"
   addListSongBtn.textContent = "Close"
