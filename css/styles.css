@@ -219,7 +219,8 @@ button :hover{
 }
 
 #controles-reproduccion {
-  display: flex;
+  display: none;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   gap: 1rem;
