@@ -29,6 +29,12 @@ function countUsersConnected() {
 
 function onMessage(messageData, websocket) {
     msgDict = bufferToDictionary(messageData)
+
+    wss.clients.forEach(client => {
+        let finalMessage = JSON.stringify(msgDict)
+        client.send(finalMessage)
+    });
+
     serverMessage("Client just sent this data:")
     console.log(msgDict)
     websocket.send("[SERVER] You are connected to the server")

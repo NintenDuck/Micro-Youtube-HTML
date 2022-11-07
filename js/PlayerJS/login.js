@@ -3,7 +3,6 @@ const loginInput = document.getElementById("user-input")
 const loginButton = document.getElementById("user-button")
 const busquedaElement = document.getElementById("busqueda")
 
-console.log(busquedaElement)
 
 loginButton.addEventListener("click", () => {
     login()
@@ -15,5 +14,5 @@ function login() {
     msgFormat.userName = loginInput.value
     loginElement.style.display = "none"
     busquedaElement.style.display = "flex"
-    console.log(msgFormat)
+    // console.log(msgFormat)
 }

@@ -22,7 +22,8 @@ ws.addEventListener("open", () => {
 })
 
 ws.addEventListener("message", ( {data} ) => {
-    console.log(data)
+    let infoDict = JSON.parse(data)
+    addSongToList(infoDict.songName, infoDict.songAuthor, infoDict.userName)
 })
 
 ws.addEventListener("close", () => {
@@ -38,6 +39,16 @@ ws.addEventListener("close", () => {
 function reconnectionTry() {
     console.log("Retrying connection to server (not really)")
 }
+
+
+// Transforma el buffer de un mensaje (del cliente)
+// a un diccionario de strings
+function bufferToDictionary(buffer) {
+    newString = buffer.toString()
+    newDictionary = JSON.parse(newString)
+    return newDictionary
+}
+
 
 // Envia el nombre del usuario y el nombre de una cancion
 // return: el mensaje a enviar

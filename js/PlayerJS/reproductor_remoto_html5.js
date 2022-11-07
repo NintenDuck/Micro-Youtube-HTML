@@ -144,7 +144,7 @@ function ListSong() {
   if (inputValue === "") return
   
   sendMusicInfo(sName[0],sName[1], ws)
-  addSongToList(sName[0], sName[1], msgFormat.userName)
+  // addSongToList(sName[0], sName[1], msgFormat.userName)
   inputSearch.value = ""
 }
 
