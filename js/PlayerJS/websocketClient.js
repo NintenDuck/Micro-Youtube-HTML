@@ -28,10 +28,10 @@ ws.addEventListener("message", ( {data} ) => {
     if (infoDict.action != "none") {
         switch (infoDict.action) {
             case "skip-forward":
-                console.log("Skipped forward")
+                nextSong()
                 break
             case "skip-backward":
-                console.log("Skipped backwards")
+                previousVideo()
                 break
             default:
                 return
@@ -71,7 +71,6 @@ function sendMusicInfo(action="", songName="",songAuthor="", websocket) {
     msgFormat.action = action
     msgFormat.songName = songName
     msgFormat.songAuthor = songAuthor
-    sendMessage = JSON.stringify(msgFormat)
+    console.log(msgFormat)
     websocket.send(JSON.stringify(msgFormat))
-    return sendMessage
 }

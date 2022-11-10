@@ -21,20 +21,24 @@ function playSong() {
     changePlayButtonState()
 }
 
-function nextVideo() {
-  sendMusicInfo("skip-forward", "", "", ws)
+function nextSong() {
   player.nextVideo()
+  console.log("Skipped-forward")
+  sendMusicInfo("skip-forward", "", "", ws)
+  setTimeout(() => {}, 5000);
   changePlayButtonState()
 }
 
 function previousVideo() {
-    sendMusicInfo("skip-backward", "", "", ws)
-    player.previousVideo()
-    changePlayButtonState()
+  player.previousVideo()
+  console.log("Skipped-backward")
+  sendMusicInfo("skip-backward", "", "", ws)
+  setTimeout(() => {}, 5000);
+  changePlayButtonState()
 }
 
 function pauseSong() {
-    player.pauseVideo();
+  player.pauseVideo();
 }
 // **********************************************************
 // MANEJO DE ESTADOS DE CONTROLES DE REPRODUCCION
