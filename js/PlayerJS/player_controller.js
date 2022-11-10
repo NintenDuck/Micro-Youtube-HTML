@@ -22,11 +22,13 @@ function playSong() {
 }
 
 function nextVideo() {
-    player.nextVideo()
-    changePlayButtonState()
-  }
-  
-  function previousVideo() {
+  sendMusicInfo("skip-forward", "", "", ws)
+  player.nextVideo()
+  changePlayButtonState()
+}
+
+function previousVideo() {
+    sendMusicInfo("skip-backward", "", "", ws)
     player.previousVideo()
     changePlayButtonState()
 }

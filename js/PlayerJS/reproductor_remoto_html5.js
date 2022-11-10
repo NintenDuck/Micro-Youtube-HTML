@@ -143,7 +143,7 @@ function ListSong() {
   sName = inputValue.split(",")
   if (inputValue === "") return
   
-  sendMusicInfo(sName[0],sName[1], ws)
+  sendMusicInfo("none", sName[0],sName[1], ws)
   // addSongToList(sName[0], sName[1], msgFormat.userName)
   inputSearch.value = ""
 }
@@ -242,7 +242,7 @@ function createYoutubeListElement(videoName = "", channelName = "", imageURL = "
   addButton.style.backgroundColor = "palegreen"
   addButton.addEventListener("click", () => {
     // addSongToList(videoName, channelName, "@Andres")
-    sendMusicInfo(videoName, channelName, ws)
+    sendMusicInfo("none", videoName, channelName, ws)
   })
   addListSongBtn.style.backgroundColor = "crimson"
   addListSongBtn.textContent = "Close"

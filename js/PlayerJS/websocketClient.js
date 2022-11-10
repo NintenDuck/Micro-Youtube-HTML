@@ -7,6 +7,7 @@ var ws = new WebSocket("ws://localhost:8008")
 let defaultUsername = "default"
 
 let msgFormat = {
+    action: "none",
     userName: defaultUsername,
     songName: "some song name",
     songAuthor: "some author"
@@ -23,6 +24,20 @@ ws.addEventListener("open", () => {
 
 ws.addEventListener("message", ( {data} ) => {
     let infoDict = JSON.parse(data)
+
+    if (infoDict.action != "none") {
+        switch (infoDict.action) {
+            case "skip-forward":
+                console.log("Skipped forward")
+                break
+            case "skip-backward":
+                console.log("Skipped backwards")
+                break
+            default:
+                return
+        }
+    }
+    
     addSongToList(infoDict.songName, infoDict.songAuthor, infoDict.userName)
 })
 
@@ -52,9 +67,11 @@ function bufferToDictionary(buffer) {
 
 // Envia el nombre del usuario y el nombre de una cancion
 // return: el mensaje a enviar
-function sendMusicInfo(songName="",songAuthor="", websocket) {
+function sendMusicInfo(action="", songName="",songAuthor="", websocket) {
+    msgFormat.action = action
     msgFormat.songName = songName
     msgFormat.songAuthor = songAuthor
-    let messageSent = websocket.send(JSON.stringify(msgFormat))
-    return messageSent
+    sendMessage = JSON.stringify(msgFormat)
+    websocket.send(JSON.stringify(msgFormat))
+    return sendMessage
 }
