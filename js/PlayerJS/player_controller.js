@@ -18,28 +18,39 @@ skipPrevBtn.addEventListener("mouseup", () => {skipPrevBtn.src = "./resources/sv
 // **********************************************************
 
 function playSong() {
-    changePlayButtonState()
+  changePlayButtonState()
 }
 
 function nextSong() {
   player.nextVideo()
-  console.log("Skipped-forward")
-  sendMusicInfo("skip-forward", "", "", ws)
-  setTimeout(() => {}, 5000);
   changePlayButtonState()
 }
 
-function previousVideo() {
+function previousSong() {
   player.previousVideo()
-  console.log("Skipped-backward")
-  sendMusicInfo("skip-backward", "", "", ws)
-  setTimeout(() => {}, 5000);
   changePlayButtonState()
 }
 
 function pauseSong() {
   player.pauseVideo();
 }
+
+// **********************************************************
+// MANEJO DE SEÑALES CON WEBSOCKETS
+// **********************************************************
+function sendNextSong() {
+  sendMusicInfo("skip-forward", "", "", ws)
+}
+
+function sendPrevSong() {
+  sendMusicInfo("skip-backward", "", "", ws)
+}
+
+function sendPlayPause() {
+  sendMusicInfo("pause-play", "", "", ws)
+}
+
+
 // **********************************************************
 // MANEJO DE ESTADOS DE CONTROLES DE REPRODUCCION
 // **********************************************************

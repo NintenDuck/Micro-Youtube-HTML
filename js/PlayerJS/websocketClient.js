@@ -27,12 +27,15 @@ ws.addEventListener("message", ( {data} ) => {
 
     if (infoDict.action != "none") {
         switch (infoDict.action) {
+            case "pause-play":
+                changePlayButtonState()
+                return
             case "skip-forward":
                 nextSong()
-                break
+                return
             case "skip-backward":
-                previousVideo()
-                break
+                previousSong()
+                return
             default:
                 return
         }
