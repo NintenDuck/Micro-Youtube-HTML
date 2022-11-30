@@ -10,7 +10,8 @@ let msgFormat = {
     action: "none",
     userName: defaultUsername,
     songName: "some song name",
-    songAuthor: "some author"
+    songAuthor: "some author",
+    newIdQueue: "some id"
 }
 
 
@@ -70,10 +71,11 @@ function bufferToDictionary(buffer) {
 
 // Envia el nombre del usuario y el nombre de una cancion
 // return: el mensaje a enviar
-function sendMusicInfo(action="", songName="",songAuthor="", websocket) {
+function sendMusicInfo(action="", songName="",songAuthor="", websocket, videoIdQueue="") {
     msgFormat.action = action
     msgFormat.songName = songName
     msgFormat.songAuthor = songAuthor
+    msgFormat.newIdQueue = videoIdQueue
     console.log(msgFormat)
     websocket.send(JSON.stringify(msgFormat))
 }

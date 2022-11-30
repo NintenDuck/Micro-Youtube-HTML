@@ -1,5 +1,6 @@
 // **********************************************************
-// Code to make the input check for key presses
+// CODE TO MAKE THE INPUT CHECK FOR KEY PRESSES
+// (MOSTLY TO WASTE LESS REQUESTS FROM THE YOUTUBE API)
 // **********************************************************
 const inputSearch = document.getElementById("search-bar")
 let typeCounter = 0
@@ -30,6 +31,22 @@ var personalID = "VP6isH0l3nLU-NIJs875nw"
 // OWN CODE
 
 // **********************************************************
+// FUNCIONES DE TESTEO
+// **********************************************************
+
+let videoQueue = []
+
+function foo() {
+  console.log("Cargando video por ID")
+  player.loadVideoById("bHQqvYy5KYo", 0, "small")
+}
+
+function bar(newYoutubeId) {
+  videoQueue.push(newYoutubeId)
+  console.log(videoQueue)
+}
+
+// **********************************************************
 // FUNCION PARA LLAMAR RESULTADOS DE YOUTUBE
 // **********************************************************
 async function getSearchResults(querySearch, searchTypeDefault = "short", suggestionAmount = 10) {
@@ -44,6 +61,7 @@ async function getSearchResults(querySearch, searchTypeDefault = "short", sugges
         type: "music"
       }
     })
+    
     if (respuesta.status === 200) {
       const busqueda = await respuesta.data.items
       // console.log(busqueda)
@@ -61,10 +79,11 @@ async function getSearchResults(querySearch, searchTypeDefault = "short", sugges
 }
 
 
-// REGRESA UN ARREGLO CON EL TITULO Y EL NOMBRE DEL CANAL DE LA BUSQUEDA
+// REGRESA UN ARREGLO CON EL TITULO, EL NOMBRE DEL CANAL DE LA BUSQUEDA
+// Y EL ID DE EL MISMO VIDEO EN UN ARRAY
 function listToSearchNames(resultsArray = []) {
   namesArray = resultsArray.map(x => {
-    titleAuthorArray = [x.snippet.title, x.snippet.channelTitle]
+    titleAuthorArray = [x.snippet.title, x.snippet.channelTitle, x.id.videoId]
     return titleAuthorArray
   })
 
@@ -73,9 +92,9 @@ function listToSearchNames(resultsArray = []) {
 
 // ADIERE UNA CANCION A LA LISTA DE REPRODUCCION
 // CON LOS SIGUIENTES PARAMETROS:
-// param1@: nombre de la cancion:             STRING
-// param1@: nombre del artista:               STRING
-// param1@: nombre del usuario que la envio:  STRING
+// @songName: nombre de la cancion:             STRING
+// @authorName: nombre del artista:             STRING
+// userName: nombre del usuario que la envio:   STRING
 function addSongToList(songName, authorName, userName) {
   const playListContainer = document.getElementById("playlist-container")
 
@@ -142,8 +161,8 @@ function ListSong() {
   inputValue = inputSearch.value
   sName = inputValue.split(",")
   if (inputValue === "") return
-  
-  sendMusicInfo("none", sName[0],sName[1], ws)
+  bar(sName[2])
+  sendMusicInfo("none", sName[0],sName[1], ws, sName[2])
   // addSongToList(sName[0], sName[1], msgFormat.userName)
   inputSearch.value = ""
 }
@@ -189,7 +208,7 @@ function addNewDatalistOptions(newOptionList) {
   searchDataList = document.getElementById("you-search-datalist")
   newOptionList.forEach(search => {
     newOption = document.createElement("option")
-    newOption.value = search[0] + ", " + search[1]
+    newOption.value = search[0] + ", " + search[1] + ", " + search[2]
     searchDataList.appendChild(newOption)
   });
 }
