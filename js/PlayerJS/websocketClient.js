@@ -37,12 +37,15 @@ ws.addEventListener("message", ( {data} ) => {
             case "skip-backward":
                 previousSong()
                 return
+            case "add-queue":
+                console.log("Just send a song")
+                addVideoToQueue(infoDict.newIdQueue)
+                addSongToList(infoDict.songName, infoDict.songAuthor, infoDict.userName)
             default:
                 return
         }
     }
     
-    addSongToList(infoDict.songName, infoDict.songAuthor, infoDict.userName)
 })
 
 ws.addEventListener("close", () => {
@@ -54,7 +57,6 @@ ws.addEventListener("close", () => {
 // FUNCIONES DE AYUDA
 // **********************************************************
 
-// TODO: Make client constantly reconnect to server
 function reconnectionTry() {
     console.log("Retrying connection to server (not really)")
 }
@@ -76,6 +78,6 @@ function sendMusicInfo(action="", songName="",songAuthor="", websocket, videoIdQ
     msgFormat.songName = songName
     msgFormat.songAuthor = songAuthor
     msgFormat.newIdQueue = videoIdQueue
-    console.log(msgFormat)
+    // console.log(msgFormat)
     websocket.send(JSON.stringify(msgFormat))
 }

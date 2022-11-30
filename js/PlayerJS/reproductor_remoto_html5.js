@@ -41,7 +41,7 @@ function foo() {
   player.loadVideoById("bHQqvYy5KYo", 0, "small")
 }
 
-function bar(newYoutubeId) {
+function addVideoToQueue(newYoutubeId) {
   videoQueue.push(newYoutubeId)
   console.log(videoQueue)
 }
@@ -161,9 +161,7 @@ function ListSong() {
   inputValue = inputSearch.value
   sName = inputValue.split(",")
   if (inputValue === "") return
-  bar(sName[2])
-  sendMusicInfo("none", sName[0],sName[1], ws, sName[2])
-  // addSongToList(sName[0], sName[1], msgFormat.userName)
+  sendMusicInfo("add-queue", sName[0],sName[1], ws, sName[2])
   inputSearch.value = ""
 }
 

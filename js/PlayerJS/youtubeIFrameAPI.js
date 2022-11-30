@@ -12,9 +12,9 @@ function onYouTubeIframeAPIReady() {
     height: '400px',
     width: '250',
     videoId: 'knp2WGkIpLw',
-    playerVars: {
-        playlist: 'knp2WGkIpLw,qelGSWu4s_U'
-    },
+    // playerVars: {
+    //     playlist: 'knp2WGkIpLw,qelGSWu4s_U'
+    // },
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChanged

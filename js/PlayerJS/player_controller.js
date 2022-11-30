@@ -1,3 +1,4 @@
+// TODO: Make controllers change music according to array with id's
 // **********************************************************
 // HACER QUE EN CLICK CAMBIE WEA
 // **********************************************************
@@ -63,9 +64,15 @@ const btnStates = {
 function onPlayerStateChanged(event) {
   if (event.data == YT.PlayerState.PLAYING) {
     currentBtnState = btnStates["Playing"]
+    // console.log("Resumed!")
   }
   else if (event.data == YT.PlayerState.PAUSED) {
     currentBtnState = btnStates["Paused"]
+    // console.log("Paused!")
+  }
+  // TODO: Make this thing play next song
+  else if ( event.data == YT.PlayerState.ENDED ) {
+    // console.log("Video ended!")
   }
 }
 
