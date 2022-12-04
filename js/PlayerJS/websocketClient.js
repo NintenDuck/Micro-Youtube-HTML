@@ -39,7 +39,7 @@ ws.addEventListener("message", ( {data} ) => {
                 return
             case "add-queue":
                 console.log("Just send a song")
-                addVideoToQueue(infoDict.newIdQueue)
+                addVideoToQueue(infoDict)
                 addSongToList(infoDict.songName, infoDict.songAuthor, infoDict.userName)
             default:
                 return

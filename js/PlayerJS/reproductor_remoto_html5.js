@@ -1,4 +1,4 @@
-// **********************************************************
+  // **********************************************************
 // CODE TO MAKE THE INPUT CHECK FOR KEY PRESSES
 // (MOSTLY TO WASTE LESS REQUESTS FROM THE YOUTUBE API)
 // **********************************************************
@@ -22,29 +22,13 @@ inputSearch.addEventListener("keypress", (e) => {
 })
 
 // Youtube API stuff
-// var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
+var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
 // var apiKey = "AIzaSyAM7kcyAPdVOcwUUaF_9QwzfqG079iCSpQ"
-var apiKey = "AIzaSyD0bshPcvN0bkILxIM3sZQkgunVZFrTsNE"
+// var apiKey = "AIzaSyD0bshPcvN0bkILxIM3sZQkgunVZFrTsNE"
 var personalID = "VP6isH0l3nLU-NIJs875nw"
 
 
 // OWN CODE
-
-// **********************************************************
-// FUNCIONES DE TESTEO
-// **********************************************************
-
-let videoQueue = []
-
-function foo() {
-  console.log("Cargando video por ID")
-  player.loadVideoById("bHQqvYy5KYo", 0, "small")
-}
-
-function addVideoToQueue(newYoutubeId) {
-  videoQueue.push(newYoutubeId)
-  console.log(videoQueue)
-}
 
 // **********************************************************
 // FUNCION PARA LLAMAR RESULTADOS DE YOUTUBE
@@ -219,7 +203,6 @@ async function listYTResults() {
 
   deleteAllChildren(ytResultListElement)
   
-  console.log("En teoria se deberia haber limpiado el input lmao")
   ytResultListElement.style.display = "flex"
   let ytSearchResults = await getSearchResults(inputSearch.value, "full", 20)
   inputSearch.value = ""

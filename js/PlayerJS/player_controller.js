@@ -23,12 +23,12 @@ function playSong() {
 }
 
 function nextSong() {
-  player.nextVideo()
+  loadNextVideo()
   changePlayButtonState()
 }
 
 function previousSong() {
-  player.previousVideo()
+  loadPrevVideo()
   changePlayButtonState()
 }
 
@@ -59,21 +59,6 @@ const btnStates = {
   "Stopped": 0,
   "Playing": 1,
   "Paused": 2
-}
-
-function onPlayerStateChanged(event) {
-  if (event.data == YT.PlayerState.PLAYING) {
-    currentBtnState = btnStates["Playing"]
-    // console.log("Resumed!")
-  }
-  else if (event.data == YT.PlayerState.PAUSED) {
-    currentBtnState = btnStates["Paused"]
-    // console.log("Paused!")
-  }
-  // TODO: Make this thing play next song
-  else if ( event.data == YT.PlayerState.ENDED ) {
-    // console.log("Video ended!")
-  }
 }
 
 let currentBtnState = btnStates["Paused"]
