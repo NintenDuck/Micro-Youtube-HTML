@@ -22,9 +22,10 @@ inputSearch.addEventListener("keypress", (e) => {
 })
 
 // Youtube API stuff
-var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
+// var apiKey = "AIzaSyCHQfy5B9905FFtqVsANYObvEh9Y9GGZd8"
 // var apiKey = "AIzaSyAM7kcyAPdVOcwUUaF_9QwzfqG079iCSpQ"
 // var apiKey = "AIzaSyD0bshPcvN0bkILxIM3sZQkgunVZFrTsNE"
+var apiKey = "AIzaSyAEPcMpEe5mb6DnTgAXxKmUlwxZmKuyx-I"
 var personalID = "VP6isH0l3nLU-NIJs875nw"
 
 

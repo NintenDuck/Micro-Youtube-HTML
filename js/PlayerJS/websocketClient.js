@@ -37,6 +37,8 @@ ws.addEventListener("message", ( {data} ) => {
             case "skip-backward":
                 previousSong()
                 return
+            case "reset-playlist":
+                clearPlaylist()
             case "add-queue":
                 console.log("Just send a song")
                 addVideoToQueue(infoDict)
@@ -78,6 +80,5 @@ function sendMusicInfo(action="", songName="",songAuthor="", websocket, videoIdQ
     msgFormat.songName = songName
     msgFormat.songAuthor = songAuthor
     msgFormat.newIdQueue = videoIdQueue
-    // console.log(msgFormat)
     websocket.send(JSON.stringify(msgFormat))
 }

@@ -1,6 +1,6 @@
 let currentQueueId = -1
 let videoQueue = []
-let defaultVideoID = "YDIaMcSKOuo"
+let defaultVideoID = "HqSLaSSDzoE"
 
 function loadPrevVideo() {
   currentQueueId -= 1
@@ -22,17 +22,23 @@ function updateVideoData(videoName = "Some Video", videoOwner = "Owner") {
   songAuthorElem.textContent = videoOwner
 }
 
+function sendResetPlaylistMsg() {
+  sendMusicInfo("reset-playlist", "","",ws)
+}
+
 
 function clearPlaylist() {
   deleteAllChildren(document.getElementById("playlist-container"))
   resetPlaylist()
 }
 
+
 function resetPlaylist() {
   currentQueueId = -1
   videoQueue = []
   player.loadVideoById( defaultVideoID, 0, "small" )
 }
+
 
 function loadNextVideo() {
   currentQueueId += 1
@@ -45,6 +51,7 @@ function loadNextVideo() {
   let newVideoAuthor = videoQueue[currentQueueId].songAuthor
   updateVideoData(newVideoName, newVideoAuthor)
 }
+
 
 function addVideoToQueue(youtubeDictionary) {
   videoQueue.push(youtubeDictionary)
