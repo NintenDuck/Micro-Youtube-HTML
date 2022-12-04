@@ -22,6 +22,11 @@ function updateVideoData(videoName = "Some Video", videoOwner = "Owner") {
 }
 
 
+function clearPlaylist() {
+  console.log("Aun no implementado")
+}
+
+
 function loadNextVideo() {
   currentQueueId += 1
 

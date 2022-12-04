@@ -235,6 +235,10 @@ button :hover{
   cursor: pointer;
 }
 
+#btn-clear-playlist {
+  display: none;
+}
+
 #playlist-container {
   display: flex;
   flex-direction: column;
