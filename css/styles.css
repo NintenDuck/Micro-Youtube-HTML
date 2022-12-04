@@ -237,7 +237,20 @@ button :hover{
 
 #btn-clear-playlist {
   display: none;
+  color: antiquewhite;
+  background-color: crimson;
+  border: 2px solid antiquewhite;
 }
+
+#btn-clear-playlist:hover {
+  background-color: salmon;
+}
+
+#btn-clear-playlist:active {
+  background-color: antiquewhite;  
+  color: black;
+}
+
 
 #playlist-container {
   display: flex;

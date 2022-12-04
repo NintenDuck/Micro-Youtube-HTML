@@ -30,6 +30,7 @@ function sendResetPlaylistMsg() {
 function clearPlaylist() {
   deleteAllChildren(document.getElementById("playlist-container"))
   resetPlaylist()
+  updateVideoData("Let's All Love Lain", "Pistacho")
 }
 
 
