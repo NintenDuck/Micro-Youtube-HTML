@@ -149,10 +149,6 @@ function ListSong() {
   inputSearch.value = ""
 }
 
-function ListSongFull() {
-  sendMusicInfo("add-queue", songName, songAuthor, websocket)
-}
-
 // ACTUALIZA LA LISTA DE BUSQUEDAS
 // EN EL ELEMENTO DE AUTOCOMPLETE
 

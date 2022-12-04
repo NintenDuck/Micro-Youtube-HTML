@@ -1,5 +1,6 @@
 let currentQueueId = -1
 let videoQueue = []
+let defaultVideoID = "YDIaMcSKOuo"
 
 function loadPrevVideo() {
   currentQueueId -= 1
@@ -23,9 +24,15 @@ function updateVideoData(videoName = "Some Video", videoOwner = "Owner") {
 
 
 function clearPlaylist() {
-  console.log("Aun no implementado")
+  deleteAllChildren(document.getElementById("playlist-container"))
+  resetPlaylist()
 }
 
+function resetPlaylist() {
+  currentQueueId = -1
+  videoQueue = []
+  player.loadVideoById( defaultVideoID, 0, "small" )
+}
 
 function loadNextVideo() {
   currentQueueId += 1
