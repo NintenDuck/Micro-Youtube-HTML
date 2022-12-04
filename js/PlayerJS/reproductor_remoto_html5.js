@@ -149,6 +149,9 @@ function ListSong() {
   inputSearch.value = ""
 }
 
+function ListSongFull() {
+  sendMusicInfo("add-queue", songName, songAuthor, websocket)
+}
 
 // ACTUALIZA LA LISTA DE BUSQUEDAS
 // EN EL ELEMENTO DE AUTOCOMPLETE
@@ -210,21 +213,23 @@ async function listYTResults() {
     let videoName = result.snippet.title
     let videoChannel = result.snippet.channelTitle
     let videoImageURL = result.snippet.thumbnails.default.url
+    let videoID = result.id.videoId
 
-    createYoutubeListElement(videoName, videoChannel, videoImageURL, ytResultListElement)
+    createYoutubeListElement(videoName, videoChannel, videoImageURL, videoID, ytResultListElement)
   });
 }
 
 
 // ADIERE UN ELEMENTO NUEVO A LA BUSQUEDA EXTENDIDA
 
-function createYoutubeListElement(videoName = "", channelName = "", imageURL = "", outputElement) {
+function createYoutubeListElement(videoName="", channelName="", imageURL="", videoID="", outputElement) {
   // Creamos los elementos necesarios
   const elementContainer = document.createElement("div")
   const imageElement = document.createElement("img")
   const infoContainer = document.createElement("div")
   const paragraphTitle = document.createElement("p")
   const paragraphChannel = document.createElement("p")
+  const paragraphID = document.createElement("p")
   const addButton = document.createElement("button")
   const addListSongBtn = document.createElement("button")
   
@@ -238,11 +243,11 @@ function createYoutubeListElement(videoName = "", channelName = "", imageURL = "
   paragraphTitle.textContent = videoName
   paragraphChannel.textContent = channelName
   paragraphChannel.style.color = "antiquewhite"
+  paragraphID.textContent = videoID
   addButton.textContent = "Add Song"
   addButton.style.backgroundColor = "palegreen"
   addButton.addEventListener("click", () => {
-    // addSongToList(videoName, channelName, "@Andres")
-    sendMusicInfo("none", videoName, channelName, ws)
+    sendMusicInfo("add-queue", videoName, channelName, ws, videoID)
   })
   addListSongBtn.style.backgroundColor = "crimson"
   addListSongBtn.textContent = "Close"
@@ -253,6 +258,7 @@ function createYoutubeListElement(videoName = "", channelName = "", imageURL = "
   // Adjuntamos los nuevos elementos al HTML
   infoContainer.appendChild(paragraphTitle)
   infoContainer.appendChild(paragraphChannel)
+  infoContainer.appendChild(paragraphID)
   elementContainer.appendChild(imageElement)
   elementContainer.appendChild(infoContainer)
   elementContainer.appendChild(addButton)
